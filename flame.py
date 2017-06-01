@@ -4,22 +4,6 @@ import datetime as dt
 from brit_conv import OSGB36toWGS84	# requires an additional file
 import requests, json
 
-brit_coin_finds = pd.read_excel('Consolidated Reece 16+ hoard details_with numbers.xlsx')
-brit_coin_groups = pd.read_csv('Roman hoards content summaries_short.csv')
-
-#print(brit_coin_finds.columns)
-#print(brit_coin_groups.columns)
-
-cols = ['hoard_id', 'coin_group_id', 'start_year', 'end_year', 'denomination', 'num_coins', 'mint', 'created']
-coin_groups = pd.DataFrame(columns=cols)
-
-cols_finds = ['hoard_id', 'endDate', 'type_find', 'hoard?', 'excavation?', 'single?', 'num_coins', 'num_known_coins', 'num_unknown_coins', 'year_found',
-	'year_end_found', 'comments', 'lat', 'long', 'certainty', 'owner', 'created']
-coin_finds = pd.DataFrame(columns=cols_finds)
-#print(coin_groups.head())
-
-# this function verifies that the number of reported identified coins found in the hoard
-# is the same as the sum of the identified number of coin groups
 def testing_database_connections():
 	# this block creates a new DF, datatest, and initializes the sum of its coin groups to 0
 	list_of_fields = ['old_findID', 'QuantityCoins', 'Denomination_KnownTotal', 'Denomination_UnknownTotal']
@@ -61,6 +45,78 @@ def testing_database_connections():
 	#	datatest[datatest.sum_coin_groups != datatest.QuantityCoins])
 	# 259 hoards have unknown denominations
 
+def setFindsGeo():		# sets coordinates for all coin finds
+	##### sorting coordinates #####
+	geourl = "https://api.postcodes.io/places?q="
+
+	# manual fixes for areas that aren't found by the geolocator service
+	parishes = {"Savernake":"Cadley"}
+	districts = {'Bath and North East Somerset': "Bath", "City of Bristol":"Bristol", "Derbyshire Dales":"Longcliffe",
+				"North Dorset":"Shillingstone", "Dorset":"Dorchester", "Weymouth and Portland":"Weymouth", 
+				"Gravesham":"Cobham", "Medway":"Chattenden", "King's Lynn and West Norfolk":"King's Lynn",
+				"Wiltshire":"Shrewton"}
+	counties = {'Buckinghamshire': 'Aylesbury', "Norfolk":"Norwich", "Dorset":"Dorchester"}
+
+	# gets the coordinates for the places listed, at varying levels of precision
+	for i in range(len(coin_finds)):	# convers the UK geographic system to coordinates
+		#print(str(brit_coin_finds.iloc[i]['easting']), str(brit_coin_finds.iloc[i]['northing']))
+		if(brit_coin_finds.iloc[i]['easting'] == brit_coin_finds.iloc[i]['easting']):
+			temp = OSGB36toWGS84(brit_coin_finds.iloc[i]['easting'], brit_coin_finds.iloc[i]['northing'])
+			coin_finds['lat'].iloc[i] = temp[0]
+			coin_finds['long'].iloc[i] = temp[1]
+		else:	# get an estimate about the location based on the available data
+			if (brit_coin_finds.iloc[i]['parish'] == brit_coin_finds.iloc[i]['parish']):
+				if brit_coin_finds.iloc[i]['parish'] in parishes: add = parishes[brit_coin_finds.iloc[i]['parish']]
+				else: add = brit_coin_finds.iloc[i]['parish']
+			elif(brit_coin_finds.iloc[i]['district'] == brit_coin_finds.iloc[i]['district']):
+				if brit_coin_finds.iloc[i]['district'] in districts: add = districts[brit_coin_finds.iloc[i]['district']]
+				else: add = brit_coin_finds.iloc[i]['district']
+			elif(brit_coin_finds.iloc[i]['county'] == brit_coin_finds.iloc[i]['county']):
+				if brit_coin_finds.iloc[i]['county'] in counties: add = counties[brit_coin_finds.iloc[i]['county']]
+				else: add = brit_coin_finds.iloc[i]['county']
+			else:
+				add = "Whalley"	# center of UK
+			r = requests.get(geourl + add)
+			temp = json.loads(r.text)
+			try:
+				coin_finds['lat'].iloc[i] = temp['result'][0]['latitude']
+				coin_finds['long'].iloc[i] = temp['result'][0]['longitude']
+			except:
+				print(add)	# this should not print anything
+		
+
+	brit_coin_finds['certainty'] = 'highest'
+	brit_coin_finds.loc[pd.isnull(brit_coin_finds.parish), 'certainty'] = 'lower'
+	brit_coin_finds.loc[pd.isnull(brit_coin_finds.county), 'certainty'] = 'lowest'
+	coin_finds['certainty'] = brit_coin_finds['certainty']
+
+def year_limit(denom_list, denom, time):
+	if denom in denom_list:
+		if time == "start": return denom_list[denom][0]
+		if time == "end": return denom_list[denom][1]
+	else: 
+		print(denom)
+		return "irrelevant"
+
+
+brit_coin_finds = pd.read_excel('Consolidated Reece 16+ hoard details_with numbers.xlsx')
+#brit_coin_groups = pd.read_csv('Roman hoards content summaries_short.csv')
+brit_coin_groups = pd.read_csv('testing_coin_groups.csv')
+
+#print(brit_coin_finds.columns)
+#print(brit_coin_groups.columns)
+
+cols = ['hoard_id', 'coin_group_id', 'start_year', 'end_year', 'revised_start', 'revised_end', 'ruler', 'denomination', 
+	'num_coins', 'mint', 'imported', 'created', 'updated']
+coin_groups = pd.DataFrame(columns=cols)
+
+cols_finds = ['hoard_id', 'endDate', 'type_find', 'hoard?', 'excavation?', 'single?', 'num_coins', 'num_known_coins', 'num_unknown_coins', 'year_found',
+	'year_end_found', 'comments', 'lat', 'long', 'certainty', 'owner', 'created', 'imported']
+coin_finds = pd.DataFrame(columns=cols_finds)
+#print(coin_groups.head())
+
+# this function verifies that the number of reported identified coins found in the hoard
+# is the same as the sum of the identified number of coin groups
 
 coin_groups['hoard_id'] = brit_coin_groups['hoardID']
 coin_groups['coin_group_id'] = brit_coin_groups['id']
@@ -69,7 +125,10 @@ coin_groups['end_year'] = brit_coin_groups['toDate']
 coin_groups['denomination'] = brit_coin_groups['denomination']
 coin_groups['num_coins'] = brit_coin_groups['quantity']
 coin_groups['mint'] = brit_coin_groups['mint']
-coin_groups['created'] = dt.datetime.now()
+coin_groups['created'] = brit_coin_groups['created']
+coin_groups['ruler'] = brit_coin_groups['ruler']
+coin_groups['updated'] = brit_coin_groups['updated']
+coin_groups['imported'] = dt.datetime.now()
 
 coin_finds['hoard_id'] = brit_coin_finds['GIS_ID']
 coin_finds['type_find'] = brit_coin_finds['DatasetQual']
@@ -80,56 +139,13 @@ coin_finds['num_unknown_coins'] = brit_coin_finds['Denomination_UnknownTotal']
 coin_finds['year_found'] = brit_coin_finds['YearFound1']
 coin_finds['year_end_found'] = brit_coin_finds['YearFound2']
 coin_finds['comments'] = brit_coin_finds['description']
-coin_finds['created'] = dt.datetime.now()
+coin_finds['imported'] = dt.datetime.now()
 coin_finds['owner'] = 'PAS UK Finds'
 coin_finds['hoard?'] = 'hoard'
 coin_finds.loc[coin_finds.type_find == 'AC_Excavated', 'excavation?'] = 'excav'
 
-##### sorting coordinates #####
-geourl = "https://api.postcodes.io/places?q="
-parishes = {"Savernake":"Cadley"}
-districts = {'Bath and North East Somerset': "Bath", "City of Bristol":"Bristol", "Derbyshire Dales":"Longcliffe",
-			"North Dorset":"Shillingstone", "Dorset":"Dorchester", "Weymouth and Portland":"Weymouth", 
-			"Gravesham":"Cobham", "Medway":"Chattenden", "King's Lynn and West Norfolk":"King's Lynn",
-			"Wiltshire":"Shrewton"}
-counties = {'Buckinghamshire': 'Aylesbury', "Norfolk":"Norwich", "Dorset":"Dorchester",}
-for i in range(len(coin_finds)):	# convers the UK geographic system to coordinates
-	#print(str(brit_coin_finds.iloc[i]['easting']), str(brit_coin_finds.iloc[i]['northing']))
-	if(brit_coin_finds.iloc[i]['easting'] == brit_coin_finds.iloc[i]['easting']):
-		temp = OSGB36toWGS84(brit_coin_finds.iloc[i]['easting'], brit_coin_finds.iloc[i]['northing'])
-		coin_finds['lat'].iloc[i] = temp[0]
-		coin_finds['long'].iloc[i] = temp[1]
-	else:	# get an estimate about the location
-		if (brit_coin_finds.iloc[i]['parish'] == brit_coin_finds.iloc[i]['parish']):
-			if brit_coin_finds.iloc[i]['parish'] in parishes: add = parishes[brit_coin_finds.iloc[i]['parish']]
-			else: add = brit_coin_finds.iloc[i]['parish']
-		elif(brit_coin_finds.iloc[i]['district'] == brit_coin_finds.iloc[i]['district']):
-			if brit_coin_finds.iloc[i]['district'] in districts: add = districts[brit_coin_finds.iloc[i]['district']]
-			else: add = brit_coin_finds.iloc[i]['district']
-		elif(brit_coin_finds.iloc[i]['county'] == brit_coin_finds.iloc[i]['county']):
-			if brit_coin_finds.iloc[i]['county'] in counties: add = counties[brit_coin_finds.iloc[i]['county']]
-			else: add = brit_coin_finds.iloc[i]['county']
-		else:
-			add = "Whalley"	# center of UK
-		r = requests.get(geourl + add)
-		temp = json.loads(r.text)
-		try:
-			coin_finds['lat'].iloc[i] = temp['result'][0]['latitude']
-			coin_finds['long'].iloc[i] = temp['result'][0]['longitude']
-		except:
-			print(add)
-	
 
-brit_coin_finds['certainty'] = 'highest'
-brit_coin_finds.loc[pd.isnull(brit_coin_finds.parish), 'certainty'] = 'lower'
-brit_coin_finds.loc[pd.isnull(brit_coin_finds.county), 'certainty'] = 'lowest'
-coin_finds['certainty'] = brit_coin_finds['certainty']
-
-
-
-
-	
-
+setFindsGeo()
 
 #have_good_dates = coin_groups[coin_groups.end_year > 325]	# works
 #no_dates = coin_groups[pd.isnull(coin_groups['end_year'])] # works
@@ -150,6 +166,53 @@ for irr_den in irrelevant_denominations:
 print('Overall, {} coin groups remain in the database and ready for import'.format(len(coin_groups)))
 print('This is the list of coin denominations that remains in the database: {}'.format(coin_groups.denomination.unique()))
 print()
+
+# Removes all irrelevant rulers from the data frame
+irrelevant_rulers = ["Julio-Claudian (uncertain)", "Caligula", "Claudius", "Vespasian", "Marcus Aurelius (as Augustus)",
+	"Lucilla", "Antonine Empress, uncertain, 138-185", "Uncertain - 1st/2nd Century AD"]
+for irr_ruler in irrelevant_rulers:
+	coin_groups = coin_groups[coin_groups.ruler != irr_ruler]
+
+
+
+
+#coin groups - to do:
+#	start year and end year - fill these in based on the ruler (a dictionary of tuples).
+#	mint	- use a standardized name for these (a dictionary to translate UK DB->FLAME name)
+#	denomination - use a standardized name for these (but also keep the old name; use dictionary to translate).
+# 	create update function to update only those entries that have been updated (as in the column)
+ruler_list = {"House of Constantine":(307, 363), "House of Valentinian":(364,378), "House of Theodosius":(378, 408),
+	"Constantine I":(307,337), "Julian":(361, 363), "Magnentius":(350,353), "Uncertain (AD 260 - 402)":(260, 402),
+	"Gratian":(367,383)}
+denomination_dates = {"Nummus (AE 1 - AE 4)":(302, 402),	# based on existing entries
+					"Radiate or nummus":(260, 402),			# based on existing entries (/w corrections)
+					"Siliqua":(360, 402),					# based on existing entries
+					"Uncertain (copper alloy)":(-100, 410),	# one such entry
+					"Uncertain (silver)":(-100, 410),		# one such entry
+					"Unspecified ruler (contemporary copy)":(-100, 410) # one such entry
+					}
+
+
+
+coin_groups['revised_start'] = coin_groups['start_year']
+coin_groups['revised_end'] = coin_groups['end_year']
+for i in range(len(coin_groups)):
+	try:	# fill in missing years, if relevant (checks ruler first, then denomination)
+		if(coin_groups.iloc[i]['revised_start'] != coin_groups.iloc[i]['revised_start']):
+			if coin_groups['ruler'].iloc[i] == 'Unspecified ruler (contemporary copy)':
+				temp = year_limit(denomination_dates, coin_groups['denomination'].iloc[i], "start")
+				if temp != "irrelevant": coin_groups['revised_start'].iloc[i] = temp
+			else: coin_groups['revised_start'].iloc[i] = ruler_list[coin_groups['ruler'].iloc[i]][0]
+		if(coin_groups.iloc[i]['revised_end'] != coin_groups.iloc[i]['revised_end']):
+			if coin_groups['ruler'].iloc[i] == 'Unspecified ruler (contemporary copy)':
+				temp = year_limit(denomination_dates, coin_groups['denomination'].iloc[i], "end")
+				if temp != "irrelevant": coin_groups['revised_end'].iloc[i] = temp
+			else: coin_groups['revised_end'].iloc[i] = ruler_list[coin_groups['ruler'].iloc[i]][1]
+	except:
+		print("Error: Unknown ruler: {}".format(coin_groups.iloc[i]['ruler']))	# this should print nothing if working as intended
+
+	
+
 coin_groups.to_csv('coin_groups.csv')
 
 coin_finds.to_csv('coin_finds.csv')
