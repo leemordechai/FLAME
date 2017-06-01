@@ -1,7 +1,8 @@
 import pandas as pd
 import numpy as np
 import datetime as dt
-from brit_conv import OSGB36toWGS84
+from brit_conv import OSGB36toWGS84	# requires an additional file
+import requests, json
 
 brit_coin_finds = pd.read_excel('Consolidated Reece 16+ hoard details_with numbers.xlsx')
 brit_coin_groups = pd.read_csv('Roman hoards content summaries_short.csv')
@@ -84,17 +85,46 @@ coin_finds['owner'] = 'PAS UK Finds'
 coin_finds['hoard?'] = 'hoard'
 coin_finds.loc[coin_finds.type_find == 'AC_Excavated', 'excavation?'] = 'excav'
 
+##### sorting coordinates #####
+geourl = "https://api.postcodes.io/places?q="
+parishes = {"Savernake":"Cadley"}
+districts = {'Bath and North East Somerset': "Bath", "City of Bristol":"Bristol", "Derbyshire Dales":"Longcliffe",
+			"North Dorset":"Shillingstone", "Dorset":"Dorchester", "Weymouth and Portland":"Weymouth", 
+			"Gravesham":"Cobham", "Medway":"Chattenden", "King's Lynn and West Norfolk":"King's Lynn",
+			"Wiltshire":"Shrewton"}
+counties = {'Buckinghamshire': 'Aylesbury', "Norfolk":"Norwich", "Dorset":"Dorchester",}
 for i in range(len(coin_finds)):	# convers the UK geographic system to coordinates
 	#print(str(brit_coin_finds.iloc[i]['easting']), str(brit_coin_finds.iloc[i]['northing']))
 	if(brit_coin_finds.iloc[i]['easting'] == brit_coin_finds.iloc[i]['easting']):
 		temp = OSGB36toWGS84(brit_coin_finds.iloc[i]['easting'], brit_coin_finds.iloc[i]['northing'])
 		coin_finds['lat'].iloc[i] = temp[0]
 		coin_finds['long'].iloc[i] = temp[1]
+	else:	# get an estimate about the location
+		if (brit_coin_finds.iloc[i]['parish'] == brit_coin_finds.iloc[i]['parish']):
+			if brit_coin_finds.iloc[i]['parish'] in parishes: add = parishes[brit_coin_finds.iloc[i]['parish']]
+			else: add = brit_coin_finds.iloc[i]['parish']
+		elif(brit_coin_finds.iloc[i]['district'] == brit_coin_finds.iloc[i]['district']):
+			if brit_coin_finds.iloc[i]['district'] in districts: add = districts[brit_coin_finds.iloc[i]['district']]
+			else: add = brit_coin_finds.iloc[i]['district']
+		elif(brit_coin_finds.iloc[i]['county'] == brit_coin_finds.iloc[i]['county']):
+			if brit_coin_finds.iloc[i]['county'] in counties: add = counties[brit_coin_finds.iloc[i]['county']]
+			else: add = brit_coin_finds.iloc[i]['county']
+		else:
+			add = "Whalley"	# center of UK
+		r = requests.get(geourl + add)
+		temp = json.loads(r.text)
+		try:
+			coin_finds['lat'].iloc[i] = temp['result'][0]['latitude']
+			coin_finds['long'].iloc[i] = temp['result'][0]['longitude']
+		except:
+			print(add)
+	
 
 brit_coin_finds['certainty'] = 'highest'
 brit_coin_finds.loc[pd.isnull(brit_coin_finds.parish), 'certainty'] = 'lower'
 brit_coin_finds.loc[pd.isnull(brit_coin_finds.county), 'certainty'] = 'lowest'
 coin_finds['certainty'] = brit_coin_finds['certainty']
+
 
 
 
