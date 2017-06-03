@@ -4,6 +4,8 @@ import datetime as dt
 from brit_conv import OSGB36toWGS84	# requires an additional file
 import requests, json
 
+# this function verifies that the number of reported identified coins found in the hoard
+# is the same as the sum of the identified number of coin groups
 def testing_database_connections():
 	# this block creates a new DF, datatest, and initializes the sum of its coin groups to 0
 	list_of_fields = ['old_findID', 'QuantityCoins', 'Denomination_KnownTotal', 'Denomination_UnknownTotal']
@@ -59,11 +61,12 @@ def setFindsGeo():		# sets coordinates for all coin finds
 
 	# gets the coordinates for the places listed, at varying levels of precision
 	for i in range(len(coin_finds)):	# convers the UK geographic system to coordinates
-		#print(str(brit_coin_finds.iloc[i]['easting']), str(brit_coin_finds.iloc[i]['northing']))
-		if(brit_coin_finds.iloc[i]['easting'] == brit_coin_finds.iloc[i]['easting']):
-			temp = OSGB36toWGS84(brit_coin_finds.iloc[i]['easting'], brit_coin_finds.iloc[i]['northing'])
+		print("Error!!!")
+		if(brit_coin_finds['easting'].iloc[i] == brit_coin_finds['easting'].iloc[i]):
+			temp = OSGB36toWGS84(brit_coin_finds['easting'].iloc[i], brit_coin_finds['northing'].iloc[i])
 			coin_finds['lat'].iloc[i] = temp[0]
 			coin_finds['long'].iloc[i] = temp[1]
+			
 		else:	# get an estimate about the location based on the available data
 			if (brit_coin_finds.iloc[i]['parish'] == brit_coin_finds.iloc[i]['parish']):
 				if brit_coin_finds.iloc[i]['parish'] in parishes: add = parishes[brit_coin_finds.iloc[i]['parish']]
@@ -106,8 +109,8 @@ brit_coin_groups = pd.read_csv('testing_coin_groups.csv')
 #print(brit_coin_finds.columns)
 #print(brit_coin_groups.columns)
 
-cols = ['hoard_id', 'coin_group_id', 'start_year', 'end_year', 'revised_start', 'revised_end', 'ruler', 'denomination', 
-	'num_coins', 'mint', 'imported', 'created', 'updated']
+cols = ['hoard_id', 'coin_group_id', 'start_year', 'end_year', 'revised_start', 'revised_end', 'ruler', 'revised_ruler'
+	'denomination', 'num_coins', 'mint', 'imported', 'created', 'updated']
 coin_groups = pd.DataFrame(columns=cols)
 
 cols_finds = ['hoard_id', 'endDate', 'type_find', 'hoard?', 'excavation?', 'single?', 'num_coins', 'num_known_coins', 'num_unknown_coins', 'year_found',
@@ -115,8 +118,6 @@ cols_finds = ['hoard_id', 'endDate', 'type_find', 'hoard?', 'excavation?', 'sing
 coin_finds = pd.DataFrame(columns=cols_finds)
 #print(coin_groups.head())
 
-# this function verifies that the number of reported identified coins found in the hoard
-# is the same as the sum of the identified number of coin groups
 
 coin_groups['hoard_id'] = brit_coin_groups['hoardID']
 coin_groups['coin_group_id'] = brit_coin_groups['id']
@@ -143,7 +144,6 @@ coin_finds['imported'] = dt.datetime.now()
 coin_finds['owner'] = 'PAS UK Finds'
 coin_finds['hoard?'] = 'hoard'
 coin_finds.loc[coin_finds.type_find == 'AC_Excavated', 'excavation?'] = 'excav'
-
 
 setFindsGeo()
 
@@ -176,14 +176,20 @@ for irr_ruler in irrelevant_rulers:
 
 
 
+# coin groups part
+flame_denominations = pd.read_excel('Denominations.xlsx')
+flame_mints = pd.read_excel('Mints.xlsx')
+flame_rulers = pd.read_excel('Rulers.xlsx')
+
 #coin groups - to do:
-#	start year and end year - fill these in based on the ruler (a dictionary of tuples).
-#	mint	- use a standardized name for these (a dictionary to translate UK DB->FLAME name)
 #	denomination - use a standardized name for these (but also keep the old name; use dictionary to translate).
 # 	create update function to update only those entries that have been updated (as in the column)
 ruler_list = {"House of Constantine":(307, 363), "House of Valentinian":(364,378), "House of Theodosius":(378, 408),
-	"Constantine I":(307,337), "Julian":(361, 363), "Magnentius":(350,353), "Uncertain (AD 260 - 402)":(260, 402),
-	"Gratian":(367,383)}
+	"Magnentius":(350,353), "Uncertain (AD 260 - 402)":(260, 402)}
+	#"Constantine I":(307,337), "Julian":(361, 363), "Gratian":(367,383)}
+for i in range(len(flame_rulers)):
+	ruler_list[flame_rulers['RulerName'].iloc[i]] = (flame_rulers['RulerStartYear'].iloc[i],flame_rulers['RulerEndYear'].iloc[i])
+
 denomination_dates = {"Nummus (AE 1 - AE 4)":(302, 402),	# based on existing entries
 					"Radiate or nummus":(260, 402),			# based on existing entries (/w corrections)
 					"Siliqua":(360, 402),					# based on existing entries
@@ -191,13 +197,15 @@ denomination_dates = {"Nummus (AE 1 - AE 4)":(302, 402),	# based on existing ent
 					"Uncertain (silver)":(-100, 410),		# one such entry
 					"Unspecified ruler (contemporary copy)":(-100, 410) # one such entry
 					}
-
+mint_conversion = {"Trier": "Colonia Augusta Treverorum", "Lyon": "Lugdunensium", "Arles": "Arelato", "Rome": "Roma",
+			"Thessalonica": "Thessalonika", "Siscia": "Siscia", "Aquileia": "Aquileia", "Milan": "Mediolanum"}
 
 
 coin_groups['revised_start'] = coin_groups['start_year']
 coin_groups['revised_end'] = coin_groups['end_year']
 for i in range(len(coin_groups)):
-	try:	# fill in missing years, if relevant (checks ruler first, then denomination)
+	# this fills in the missing years, if relevant (checks ruler first, then denomination)
+	try:	
 		if(coin_groups.iloc[i]['revised_start'] != coin_groups.iloc[i]['revised_start']):
 			if coin_groups['ruler'].iloc[i] == 'Unspecified ruler (contemporary copy)':
 				temp = year_limit(denomination_dates, coin_groups['denomination'].iloc[i], "start")
@@ -210,8 +218,17 @@ for i in range(len(coin_groups)):
 			else: coin_groups['revised_end'].iloc[i] = ruler_list[coin_groups['ruler'].iloc[i]][1]
 	except:
 		print("Error: Unknown ruler: {}".format(coin_groups.iloc[i]['ruler']))	# this should print nothing if working as intended
-
 	
+	# this section standardizes the mint names to those in FLAME's database
+	try:
+		if coin_groups['mint'].iloc[i] == coin_groups['mint'].iloc[i]:
+			try:
+				coin_groups['mint'].iloc[i] = mint_conversion[coin_groups['mint'].iloc[i]]
+			except:
+				print("Error: Unknown mint: {}".format(coin_groups['mint'].iloc[i]))	# this should print nothing if working as intended
+	except:
+		continue
+
 
 coin_groups.to_csv('coin_groups.csv')
 
