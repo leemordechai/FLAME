@@ -61,11 +61,10 @@ def setFindsGeo():		# sets coordinates for all coin finds
 
 	# gets the coordinates for the places listed, at varying levels of precision
 	for i in range(len(coin_finds)):	# convers the UK geographic system to coordinates
-		print("Error!!!")
 		if(brit_coin_finds['easting'].iloc[i] == brit_coin_finds['easting'].iloc[i]):
 			temp = OSGB36toWGS84(brit_coin_finds['easting'].iloc[i], brit_coin_finds['northing'].iloc[i])
-			coin_finds['lat'].iloc[i] = temp[0]
-			coin_finds['long'].iloc[i] = temp[1]
+			coin_finds.set_value(i, 'lat', temp[0])
+			coin_finds.set_value(i, 'long', temp[1])
 			
 		else:	# get an estimate about the location based on the available data
 			if (brit_coin_finds.iloc[i]['parish'] == brit_coin_finds.iloc[i]['parish']):
@@ -82,8 +81,8 @@ def setFindsGeo():		# sets coordinates for all coin finds
 			r = requests.get(geourl + add)
 			temp = json.loads(r.text)
 			try:
-				coin_finds['lat'].iloc[i] = temp['result'][0]['latitude']
-				coin_finds['long'].iloc[i] = temp['result'][0]['longitude']
+				coin_finds.set_value(i, 'lat', temp['result'][0]['latitude'])
+				coin_finds.set_value(i, 'long', temp['result'][0]['longitude'])
 			except:
 				print(add)	# this should not print anything
 		
@@ -203,35 +202,35 @@ mint_conversion = {"Trier": "Colonia Augusta Treverorum", "Lyon": "Lugdunensium"
 
 coin_groups['revised_start'] = coin_groups['start_year']
 coin_groups['revised_end'] = coin_groups['end_year']
-for i in range(len(coin_groups)):
-	# this fills in the missing years, if relevant (checks ruler first, then denomination)
-	try:	
-		if(coin_groups.iloc[i]['revised_start'] != coin_groups.iloc[i]['revised_start']):
-			if coin_groups['ruler'].iloc[i] == 'Unspecified ruler (contemporary copy)':
-				temp = year_limit(denomination_dates, coin_groups['denomination'].iloc[i], "start")
-				if temp != "irrelevant": coin_groups['revised_start'].iloc[i] = temp
-			else: coin_groups['revised_start'].iloc[i] = ruler_list[coin_groups['ruler'].iloc[i]][0]
-		if(coin_groups.iloc[i]['revised_end'] != coin_groups.iloc[i]['revised_end']):
-			if coin_groups['ruler'].iloc[i] == 'Unspecified ruler (contemporary copy)':
-				temp = year_limit(denomination_dates, coin_groups['denomination'].iloc[i], "end")
-				if temp != "irrelevant": coin_groups['revised_end'].iloc[i] = temp
-			else: coin_groups['revised_end'].iloc[i] = ruler_list[coin_groups['ruler'].iloc[i]][1]
+
+for i in coin_groups.index:
+
+	# this section standardizes the ruler names to those in FLAME's database
+	try:
+		if(coin_groups.ix[i, 'revised_start'] != coin_groups.ix[i, 'revised_start']):
+			if coin_groups.ix[i, 'ruler'] == 'Unspecified ruler (contemporary copy)':
+				temp = year_limit(denomination_dates, coin_groups.ix[i, 'denomination'], "start")
+				if temp != "irrelevant": coin_groups.set_value(i, 'revised_start', temp)
+			else: coin_groups.set_value(i, 'revised_start', ruler_list[coin_groups.ix[i, 'ruler']][0])
+		if(coin_groups.ix[i, 'revised_end'] != coin_groups.ix[i, 'revised_end']):
+			if coin_groups.ix[i, 'ruler'] == 'Unspecified ruler (contemporary copy)':
+				temp = year_limit(denomination_dates, coin_groups.ix[i, 'denomination'], "end")
+				if temp != "irrelevant": coin_groups.set_value(i, 'revised_end', temp)
+			else: coin_groups.set_value(i, 'revised_end', ruler_list[coin_groups.ix[i, 'ruler']][1])
 	except:
 		print("Error: Unknown ruler: {}".format(coin_groups.iloc[i]['ruler']))	# this should print nothing if working as intended
-	
+
 	# this section standardizes the mint names to those in FLAME's database
 	try:
-		if coin_groups['mint'].iloc[i] == coin_groups['mint'].iloc[i]:
+		if coin_groups.ix[i, 'mint'] == coin_groups.ix[i, 'mint']:
 			try:
-				coin_groups['mint'].iloc[i] = mint_conversion[coin_groups['mint'].iloc[i]]
+				coin_groups = coin_groups.set_value(i, 'mint', mint_conversion[coin_groups.ix[i, 'mint']])
 			except:
-				print("Error: Unknown mint: {}".format(coin_groups['mint'].iloc[i]))	# this should print nothing if working as intended
+				print("Error: Unknown mint: {}".format(coin_groups.ix[i, 'mint']))	# this should print nothing if working as intended
 	except:
 		continue
 
-
 coin_groups.to_csv('coin_groups.csv')
-
 coin_finds.to_csv('coin_finds.csv')
 
 #testing_database_connections()
