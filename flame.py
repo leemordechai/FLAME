@@ -169,7 +169,9 @@ irrelevant_rulers = ["Julio-Claudian (uncertain)", "Caligula", "Claudius", "Vesp
 	'Marciana', 'Maximinus Daia', 'Tetrarchic Ruler (uncertain issuer)', 'Faustina II', 'Caracalla', 'Philip I',
 	'Philip II', 'Gordian III', 'Severus Alexander', 'Elagabalus', 'Uncertain - 1st-mid 3rd century', 'Probus',
 	'Victorinus', 'Galerius', 'Divus Claudius (Official)', 'Aurelian', 'Gallienus (sole reign)', 
-	'Salonina (sole reign of Gallienus)', 'Radiate, Uncertain Ruler 260-296', 'Balbinus', 'Licinius II']
+	'Salonina (sole reign of Gallienus)', 'Radiate, Uncertain Ruler 260-296', 'Balbinus', 'Licinius II', 
+	'Radiate (Barbarous)', 'Balbinus', 'Julia Maesa', 'Severus', 'Carausius', 'Augustus', 'Hostilian',
+	'Tiberius', 'Postumus', 'Maximinus']
 for irr_ruler in irrelevant_rulers:
 	coin_groups = coin_groups[coin_groups.ruler != irr_ruler]
 
@@ -185,7 +187,20 @@ flame_rulers = pd.read_excel('Rulers.xlsx')
 ruler_list = {"House of Constantine":(307, 363), "House of Valentinian":(364,378), "House of Theodosius":(378, 408),
 	"Magnentius":(350,353), "Uncertain (AD 260 - 402)":(260, 402), 
 	'Uncertain - 4th century':(300, 399), 'Magnentius or Decentius': (350, 353),
-	'Flavius Victor':(384, 388), 'Dalmatius':(335, 337)}
+	'Flavius Victor':(384, 388), 'Dalmatius':(335, 337),
+	'Constantinopolis':(330, 341),	# based on the existing entries in the database
+	'Procopius': (365, 366),
+	'Constans': (330, 350),
+	'Fausta': (324, 330),			# based on the existing entries in the database
+	'Urbs Roma': (330, 341),		# based on the existing entries in the database
+	'Crispus': (311, 330),			# based on the existing entries in the database
+	'Theodora': (337, 341),			# based on the existing entries in the database
+	'Magnus Maximus or Flavius Victor': (384, 388),
+	'Helena': (324, 341),
+	'Constantius Gallus': (351, 355), 
+	'Decentius': (350, 353)
+
+	}
 for i in range(len(flame_rulers)):
 	ruler_list[flame_rulers.ix[i, 'RulerName']] = (flame_rulers['RulerStartYear'].iloc[i],flame_rulers['RulerEndYear'].iloc[i])
 
@@ -219,7 +234,7 @@ denomination_conversion = {'Nummus (AE 1 - AE 4)':"AE 1-4 (UK find)",	# new deno
 						'Uncertain (silver)':"uncertain (silver)",	# new denomination (silver)
 						'Uncertain (copper alloy)':"unidentified bronze coins"
 						}
-ruler_conversion = {'Honorius (emperor)': 'Honorius',
+ruler_conversion = {'Honorius (emperor)': 'Honorius',			# add at least some of this to FLAME database
 					'Nummus, uncertain ruler, c. 330-402': 'Unknown',
 					'Uncertain': 'Unknown',
 					'Uncertain - 4th century': 'Unknown',
@@ -227,13 +242,25 @@ ruler_conversion = {'Honorius (emperor)': 'Honorius',
 					'Unattributed': 'Unknown',
 					'Dalmatius': 'Constantine I',
 					'Magnentius or Decentius': 'Magnentius'
-
+					'Flavius Victor':(384, 388), 
+					'Dalmatius':(335, 337),
+					'Constantinopolis':(330, 341),	
+					'Procopius': (365, 366),
+					'Constans': (330, 350),
+					'Fausta': (324, 330),			
+					'Urbs Roma': (330, 341),		
+					'Crispus': (311, 330),			
+					'Theodora': (337, 341),
+					'Magnus Maximus or Flavius Victor': (384, 388),
+					'Helena': (324, 341),
+					'Constantius Gallus': (351, 355), 
+					'Decentius': (350, 353)
 					}
 
 coin_groups['revised_start'] = coin_groups['start_year']
 coin_groups['revised_end'] = coin_groups['end_year']
 coin_groups['revised_ruler'] = coin_groups['ruler']
-
+rulers_to_resolve = set()
 for i in coin_groups.index:
 	# this updates revised_ruler based on the ruler_conversion dictionary. This is for display (not data extraction)
 	if coin_groups.ix[i,'ruler'] in ruler_conversion:
@@ -247,7 +274,8 @@ for i in coin_groups.index:
 				temp_start = ruler_list[coin_groups.ix[i, 'ruler']][0]
 			except:
 				if coin_groups.ix[i, 'ruler'] not in ruler_conversion:
-					print("Error: Unknown ruler: {}".format(coin_groups.ix[i, 'ruler']))				
+					print("Error: Unknown ruler: {}".format(coin_groups.ix[i, 'ruler']))
+					rulers_to_resolve.add(coin_groups.ix[i, 'ruler'])
 		elif coin_groups.ix[i, 'ruler'] == 'Unspecified ruler (contemporary copy)':
 			temp_start = year_limit(denomination_dates, coin_groups.ix[i, 'denomination'], "start")
 		if temp_start != -1: coin_groups.set_value(i, 'revised_start', temp_start)
@@ -260,6 +288,7 @@ for i in coin_groups.index:
 			except:
 				if coin_groups.ix[i, 'ruler'] not in ruler_conversion:
 					print("Error: Unknown ruler: {}".format(coin_groups.ix[i, 'ruler']))
+					rulers_to_resolve.add(coin_groups.ix[i, 'ruler'])
 		elif coin_groups.ix[i, 'ruler'] == 'Unspecified ruler (contemporary copy)':
 			temp_end = year_limit(denomination_dates, coin_groups.ix[i, 'denomination'], "end")
 		if temp_end != -1: coin_groups.set_value(i, 'revised_end', temp_end)
@@ -292,5 +321,5 @@ for i in coin_groups.index:
 # saving to files
 coin_groups.to_csv('coin_groups.csv')
 coin_finds.to_csv('coin_finds.csv')
-
+print("The unknown rulers are: {}".format(rulers_to_resolve))
 #testing_database_connections()
