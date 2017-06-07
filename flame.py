@@ -227,7 +227,7 @@ def coin_group_cleaning(coin_groups):
 					"Rome": "Roma",	"Thessalonica": "Thessalonika", "Siscia": "Siscia", "Aquileia": "Aquileia", 
 					"Milan": "Mediolanum", 'Amiens (Ambianum)': 'Ambianum', 'Nicomedia':'Nikomedia', 
 					"Heraclea":"Heraclea", "London":"Londinium", "Antioch":"Antioch", "Arles": "Arelato",
-					"Pavia":"Pavia", "Cyzicus":"Kyzikos", 'Sirmium':'Sirmium', 
+					"Pavia":"Ticinum", "Cyzicus":"Kyzikos", 'Sirmium':'Sirmium', 
 					'Constantinople':'Constantinople', "Ravenna": "Ravenna", "Alexandria": "Alexandria",
 					'Unattributed': 'Unknown', 'Eastern mint': 'Unknown (East Roman)', 
 					'Gallic mint': 'Unknown (Gaul)', 'Arles or Lyons ': 'Arelato or Lugdunum'}
