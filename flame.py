@@ -92,6 +92,8 @@ def setFindsGeo(brit_coin_finds, coin_finds):		# sets coordinates for all coin f
 	brit_coin_finds.loc[pd.isnull(brit_coin_finds.county), 'certainty'] = 'lowest'
 	coin_finds['certainty'] = brit_coin_finds['certainty']
 
+	return coin_finds
+
 def year_limit(denom_list, denom, time):
 	if denom in denom_list:
 		if time == "start": return denom_list[denom][0]
@@ -101,8 +103,16 @@ def year_limit(denom_list, denom, time):
 		return "irrelevant"
 
 def reg_update_coin_groups(year, month, day, coingroupsDB):
+	entries_to_update = coingroupsDB.copy()
 	update_from = dt.datetime(year, month, day)
-	toUpdate = coingroupsDB[coin_groups['updated'] == coin_groups['updated']]
+	for i in coingroupsDB.index:
+		if coingroupsDB.ix[i, 'updated'] == coingroupsDB.ix[i, 'updated']:
+			tempTime = dt.datetime.strptime(coingroupsDB.ix[i, 'updated'][:10], '%Y-%m-%d')
+		else:
+			tempTime = dt.datetime.strptime(coingroupsDB.ix[i, 'created'][:10], '%Y-%m-%d')
+		if tempTime < update_from:		# keep only the new/updated entries 
+			entries_to_update = entries_to_update.drop(i)	# removes all the older entries	
+	return entries_to_update
 
 def setting_coin_finds(brit_coin_finds):
 	cols_finds = ['hoard_id', 'endDate', 'type_find', 'hoard?', 'excavation?', 'single?', 'num_coins', 'num_known_coins', 'num_unknown_coins', 'year_found',
@@ -334,20 +344,21 @@ def coin_group_cleaning(coin_groups):
 
 brit_imported_coin_finds = pd.read_excel('Consolidated Reece 16+ hoard details_with numbers.xlsx')
 brit_imported_coin_groups = pd.read_csv('Roman hoards content summaries_short.csv')
-#brit_coin_groups = pd.read_csv('testing_coin_groups.csv')
+#brit_imported_coin_groups = pd.read_csv('testing_coin_groups.csv')
 
 finds = setting_coin_finds(brit_imported_coin_finds)
 groups = setting_coin_groups(brit_imported_coin_groups)
 
-#finds = setFindsGeo(brit_imported_coin_finds, finds)
+finds = setFindsGeo(brit_imported_coin_finds, finds)
 groups = initial_filtering(groups)
 groups = coin_group_cleaning(groups)
 
-#coin groups - to do:
-# 	create update function to update only those entries that have been updated (as in the column)
+groupB = reg_update_coin_groups(2015, 6, 1, groups)		# change these numbers to update
 
 # saving to files
 groups.to_csv('coin_groups.csv')
+groupB.to_csv('coin_groups_to_update.csv')
 finds.to_csv('coin_finds.csv')
 
 #testing_database_connections()
+
