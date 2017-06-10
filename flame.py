@@ -6,7 +6,7 @@ import requests, json
 
 # this function verifies that the number of reported identified coins found in the hoard
 # is the same as the sum of the identified number of coin groups
-def testing_database_connections():
+def testing_database_connections(): 		# testing function, not normally used
 	# this block creates a new DF, datatest, and initializes the sum of its coin groups to 0
 	list_of_fields = ['old_findID', 'QuantityCoins', 'Denomination_KnownTotal', 'Denomination_UnknownTotal']
 	datatest = brit_coin_finds[list_of_fields]
@@ -94,7 +94,7 @@ def setFindsGeo(brit_coin_finds, coin_finds):		# sets coordinates for all coin f
 
 	return coin_finds
 
-def year_limit(denom_list, denom, time):
+def year_limit(denom_list, denom, time):	# checks for relevant denominations
 	if denom in denom_list:
 		if time == "start": return denom_list[denom][0]
 		if time == "end": return denom_list[denom][1]
@@ -353,11 +353,11 @@ finds = setFindsGeo(brit_imported_coin_finds, finds)
 groups = initial_filtering(groups)
 groups = coin_group_cleaning(groups)
 
-groupB = reg_update_coin_groups(2015, 6, 1, groups)		# change these numbers to update
+groupB = reg_update_coin_groups(2015, 6, 1, groups)		# change these numbers (year\month\date) to update all subsequent entries
 
 # saving to files
 groups.to_csv('coin_groups.csv')
-groupB.to_csv('coin_groups_to_update.csv')
+groupB.to_csv('coin_groups_to_update.csv')	# this returns only those entries which require updating
 finds.to_csv('coin_finds.csv')
 
 #testing_database_connections()
