@@ -52,14 +52,18 @@ def setFindsGeo(brit_coin_finds, coin_finds):		# sets coordinates for all coin f
 	geourl = "https://api.postcodes.io/places?q="
 
 	# manual fixes for areas that aren't found by the geolocator service
-	parishes = {"Savernake":"Cadley"}
+	parishes = {"Savernake":"Cadley", 'Orford and Tunstall':'Orford', 'Exmoor':'Devon',
+				'Ickworth':'Horringer', 'Bury St. Edmunds':'Blackthorpe'}
 	districts = {'Bath and North East Somerset': "Bath", "City of Bristol":"Bristol", "Derbyshire Dales":"Longcliffe",
 				"North Dorset":"Shillingstone", "Dorset":"Dorchester", "Weymouth and Portland":"Weymouth", 
 				"Gravesham":"Cobham", "Medway":"Chattenden", "King's Lynn and West Norfolk":"King's Lynn",
-				"Wiltshire":"Shrewton"}
-	counties = {'Buckinghamshire': 'Aylesbury', "Norfolk":"Norwich", "Dorset":"Dorchester"}
+				"Wiltshire":"Shrewton", 'City of Plymouth':'Plymouth', 'North Devon': 'Devon'}
+	counties = {'Buckinghamshire': 'Aylesbury', "Norfolk":"Norwich", "Dorset":"Dorchester", 
+				'Northamptonshire':'Northampton', 'Greater London Authority':'London', 
+				'Cambridgeshire':'Cambridge'}
 
 	# gets the coordinates for the places listed, at varying levels of precision
+	# 28.8.17 - BUG: the service returns a list of places, and this prob. selects the first
 	for i in range(len(coin_finds)):	# convers the UK geographic system to coordinates
 		if(brit_coin_finds['easting'].iloc[i] == brit_coin_finds['easting'].iloc[i]):
 			temp = OSGB36toWGS84(brit_coin_finds['easting'].iloc[i], brit_coin_finds['northing'].iloc[i])
@@ -85,6 +89,9 @@ def setFindsGeo(brit_coin_finds, coin_finds):		# sets coordinates for all coin f
 				coin_finds.set_value(i, 'long', temp['result'][0]['longitude'])
 			except:
 				print(add)	# this should not print anything
+				print(brit_coin_finds.iloc[i]['county'])
+				print(brit_coin_finds.iloc[i]['district'])
+				print(brit_coin_finds.iloc[i]['parish'])
 		
 
 	brit_coin_finds['certainty'] = 'highest'
@@ -115,12 +122,18 @@ def reg_update_coin_groups(year, month, day, coingroupsDB):
 	return entries_to_update
 
 def setting_coin_finds(brit_coin_finds):
-	cols_finds = ['hoard_id', 'endDate', 'type_find', 'hoard?', 'excavation?', 'single?', 'num_coins', 'num_known_coins', 'num_unknown_coins', 'year_found',
+	cols_finds = ['hoard_id', 'name', 'startDate', 'endDate', 'type_find', 'hoard?', 'excavation?', 'single?', 'num_coins', 'num_known_coins', 'num_unknown_coins', 'year_found',
 		'year_end_found', 'comments', 'lat', 'long', 'certainty', 'owner', 'created', 'imported']
 	coin_finds = pd.DataFrame(columns=cols_finds)
 
 	coin_finds['hoard_id'] = brit_coin_finds['GIS_ID']
+	# name is made of PAS: <location name> + <ID number in PAS>
+	try:
+		coin_finds['name'] = 'PAS: ' + brit_coin_finds['knownas'].map(str) + ' ' + brit_coin_finds['ID no.'].map(str) 
+	except:
+		coin_finds['name'] = 'PAS: ' + brit_coin_finds['knownas'].map(str) + ' ' + brit_coin_finds['GIS_ID'].map(str) 
 	coin_finds['type_find'] = brit_coin_finds['DatasetQual']
+	coin_finds['startDate'] = brit_coin_finds['fromTerminalYear']
 	coin_finds['endDate'] = brit_coin_finds['toTerminalYear']
 	coin_finds['num_coins'] = brit_coin_finds['QuantityCoins']
 	coin_finds['num_known_coins'] = brit_coin_finds['Denomination_KnownTotal']
@@ -163,7 +176,10 @@ def initial_filtering(coin_groups_raw):		# filters out irrelevant denominations,
 								'As (Roman Republic)', 'Quadrans (Roman Republic)', 'Quadrans',
 								'Sestertius (Roman Republic)', 'Dupondius or as', 'Double sestertius',
 								'Sestertius, dupondius or as', 'Q radiate', 'As', 'Semis', 'Stater (gold)',
-								'Aureus (Republic/Empire)']
+								'Aureus (Republic/Empire)', 'Denarius', 'Stater (silver)', 
+								'Quarter stater (gold)', 'Quarter stater (silver)', 'Half stater', 'Denarius',
+								'As', 'Denarius (Empire)', 'Unit (copper alloy)', 'Drachm', 'Tetradrachm',
+								'Potin (Cast bronze)']
 	for irr_den in irrelevant_denominations:
 		print('{} of "{}" removed.'.format(len(coin_groups_filtered[coin_groups_filtered.denomination == irr_den]), irr_den))
 		coin_groups_filtered = coin_groups_filtered[coin_groups_filtered.denomination != irr_den]
@@ -182,7 +198,14 @@ def initial_filtering(coin_groups_raw):		# filters out irrelevant denominations,
 		'Victorinus', 'Galerius', 'Divus Claudius (Official)', 'Aurelian', 'Gallienus (sole reign)', 
 		'Salonina (sole reign of Gallienus)', 'Radiate, Uncertain Ruler 260-296', 'Balbinus', 'Licinius II', 
 		'Radiate (Barbarous)', 'Balbinus', 'Julia Maesa', 'Severus', 'Carausius', 'Augustus', 'Hostilian',
-		'Tiberius', 'Postumus', 'Maximinus']
+		'Tiberius', 'Postumus', 'Maximinus', 'Juba I', 'Tranquillina', 'Trebonius Gallus', 'Trajan Decius',
+		'Trajan', 'Julia Domna', 'ECEN/ECE', 'AESV', 'Uninscribed', 'Cunobelin', 'Gelon I And Hieron I',
+		'Valerian I', 'Epaticcus', 'Gallienus', 'Commodus', 'Claudius II', 'Carinus', 
+		'VOLISIOS DUMNOVELLAUNOS', 'VOLISIOS CARTIVELLAVNOS', 'SAENV', 'IISVPRASV', 'DUMNOCO TIGIR SENO',
+		'Gallienus', 'Otacilia', 'Tincomarus', 'Verica', 'Julia Mamaea', 'CARA[TACUS]',
+		'EISV', 'AVN COST', 'ANTED (Iceni)', 'CANI DVRO', 'ANTED (Dobunni)', 'Eppillus', 
+		'VOLISIOS DUMNOCOVEROS', 'Salonina', 'VEP CORF', 'DVMNOCO TIGIR SENO', 'BODVOC', 
+		'SVB ESVPRASTO ESICO FECIT']
 	for irr_ruler in irrelevant_rulers:
 		coin_groups_filtered = coin_groups_filtered[coin_groups_filtered.ruler != irr_ruler]
 
@@ -191,7 +214,9 @@ def initial_filtering(coin_groups_raw):		# filters out irrelevant denominations,
 		coin_groups_filtered = coin_groups_filtered[coin_groups_filtered.mint != irr_mint]
 
 	# manual removal of entries
-	irrelevant_entries = [21109]	# nothing known about these coins and error in ruler attribution
+	irrelevant_entries = [21109, 1390, 1391, 6462, 6929, 6953, 6954, 6977, 6983, 6989, 8825, 
+							8827, 9064, 9329, 9503, 10488, 11438] 
+							# nothing/very little known about these coins and error in ruler attribution
 	for irr_entry in irrelevant_entries:
 		coin_groups_filtered = coin_groups_filtered[coin_groups_filtered.coin_group_id != irr_entry]
 
@@ -240,7 +265,8 @@ def coin_group_cleaning(coin_groups):
 					"Pavia":"Ticinum", "Cyzicus":"Kyzikos", 'Sirmium':'Sirmium', 
 					'Constantinople':'Constantinople', "Ravenna": "Ravenna", "Alexandria": "Alexandria",
 					'Unattributed': 'Unknown', 'Eastern mint': 'Unknown (East Roman)', 
-					'Gallic mint': 'Unknown (Gaul)', 'Arles or Lyons ': 'Arelato or Lugdunum'}
+					'Gallic mint': 'Unknown (Gaul)', 'Arles or Lyons ': 'Arelato or Lugdunum',
+					'Italian mint': 'Unknown (Italy)', 'Alexandria (Egypt)': 'Alexandria'}
 	# order: 	denomination in UK database:denomination name in FLAME
 	denomination_conversion = {'Nummus (AE 1 - AE 4)':"AE 1-4 (UK find)",	# new denomination (bronze)
 							'Miliarensis':"miliarensis",
@@ -355,10 +381,32 @@ groups = coin_group_cleaning(groups)
 
 groupB = reg_update_coin_groups(2015, 6, 1, groups)		# change these numbers (year\month\date) to update all subsequent entries
 
+
+# taking in the extra two files:
+################################
+additional_finds = pd.read_csv('additional_hoards.csv', encoding='ISO-8859-1')
+additional_coin_groups = pd.read_csv('additional_coin_groups.csv', encoding='ISO-8859-1')
+
+more_finds = setting_coin_finds(additional_finds)
+more_groups = setting_coin_groups(additional_coin_groups)
+
+more_finds = setFindsGeo(additional_finds, more_finds)
+more_groups = initial_filtering(more_groups)
+more_groups = coin_group_cleaning(more_groups)
+
+more_groupsB = reg_update_coin_groups(2015, 6, 1, more_groups)
+################################
+
+
+############ merging both files ###########
+groups = pd.concat([groups, more_groups])
+groupB = pd.concat([groupB, more_groupsB])
+finds = pd.concat([finds, more_finds])
+
+
 # saving to files
 groups.to_csv('coin_groups.csv')
 groupB.to_csv('coin_groups_to_update.csv')	# this returns only those entries which require updating
 finds.to_csv('coin_finds.csv')
 
 #testing_database_connections()
-
