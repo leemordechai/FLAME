@@ -2,7 +2,6 @@ import pandas as pd
 import numpy as np
 import datetime as dt
 
-ths = pd.read_csv('THS.csv', index_col='ID')
 
 # function to convert denominations to the standard nummi notation
 def convert_denomination(df):
@@ -16,6 +15,8 @@ def setting_coin_finds(ths):
 	cols_finds = ['hoard_id', 'name', 'startDate', 'endDate', 'type_find', 'hoard?', 'excavation?', 'single?', 'num_coins', 'num_known_coins', 'num_unknown_coins', 'year_found',
 		'year_end_found', 'comments', 'lat', 'long', 'certainty', 'owner', 'created', 'imported']
 	coin_finds = pd.DataFrame(columns=cols_finds)
+
+	print(coin_finds.info)
 
 	coin_finds['hoard_id'] = 'THS-' + (pd.Series(ths.index)-1).apply(str)
 	coin_finds['name'] = ths['Location'] + ', ' + ths['Region'] + '(' + coin_finds['hoard_id'] + ')'
@@ -32,7 +33,9 @@ def setting_coin_finds(ths):
 	coin_finds['created'] = pd.Timestamp.now()
 	coin_finds['imported'] = pd.Timestamp.now()
 	coin_finds['comments'] = ths['Notes']
-	#coin_finds = coin_finds.drop([0])
+
+	print(coin_finds.head())
+	print(coin_finds.tail())
 
 	return coin_finds
 
@@ -43,7 +46,7 @@ def setting_coin_groups(ths):
 		'denomination', 'num_coins', 'mint', 'imported', 'created', 'updated']
 	coin_groups = pd.DataFrame(columns=cols)
 
-	coin_groups['hoard_id'] = 'THS-' + (pd.Series(ths.index)-1).apply(str)
+	coin_groups['hoard_id'] = 'THS-' + (pd.Series(ths.index)).apply(str)
 	coin_groups['coin_group_id'] = coin_groups['hoard_id'] + '-1' # since these are all single finds
 	coin_groups['start_year'] = ths['Date1']
 	coin_groups['end_year'] = ths['Date2']
@@ -58,13 +61,19 @@ def setting_coin_groups(ths):
 	coin_groups['created'] = pd.Timestamp.now()
 	coin_groups['updated'] = pd.Timestamp.now()
 
-	#coin_groups = coin_groups.drop([0])
-
 	return coin_groups
 
+ths = pd.read_csv('THS.csv')
+cols = ["ID","Location","Region","Denomination","Date1","Date2","Number","Notes","Bibliography"]
+ths.columns = cols
+ths.index = ths['ID']
 
 ths = convert_denomination(ths)
-print(len(setting_coin_finds(ths)))
-print(len(setting_coin_groups(ths)))
+print(ths.head())
+print(ths.tail())
 
-#print(ths.head())
+coin_finds = setting_coin_finds(ths)
+coin_groups = setting_coin_groups(ths)
+
+
+
