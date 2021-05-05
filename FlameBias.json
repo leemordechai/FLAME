@@ -1,0 +1,32 @@
+{
+    "Biases": [
+            {
+                "Name": "Use Bias",
+                "Description": "In late antiquity as today, certain coins are used more or less commonly than others. This phenomenon may be a result of different denominations, different purity, or even their aesthetic value. The differences in coin-use biases the surviving evidence, as coins used more commonly would be more prone to loss (and therefore would be found more frequently in excavations, which uncover a wide-ranging slice of everyday life), while some coins that were used less commonly may be over represented in hoards.",
+                "Subtype1": 
+                    {
+                        "Name": "High Use",
+                        "Description": "This is coinage that is in frequent use. Often, these are of lower-value metals, such as Bronze. This may vary in different places and times (for example, silver is common in Sasanian regions and in Gaul/Britain post-700, though uncommon elsewhere). Because of this, it is more likely to be discarded or lost, sheerly by virtue of ubiquity. It is therefore commonly found in scattered, low-quantity caches on excavations and in single finds."
+                    },
+                "Subtype2":
+                    {
+                        "Name": "Low Use",
+                        "Description": "This is coinage that is infrequently used, being reserved for high-value transactions or for use as a store of value. This may include coinages made of gold or silver (this is the case in most Mediterranean regions, at most times). Because of this, such coinage is more likely to be stored up or hidden, and is more likely to be found in hoards than on excavations or in single finds."
+                    }
+             },
+             {
+                "Name": "Loss Bias",
+                "Description": "Certain coins were lost more frequently than others. This is partially a result of other biases, such as Use Bias, but could also be the result of the different values of coins. In general, hoard finds represent the highest denominations in circulation at a given time or place, while excavation coins represent the lowest denominations in circulation. According to Gresham’s Law, people would save coins with higher relative intrinsic value and spend coins with lower relative intrinsic value. This would lead to two distinct aggregates of coins, those in savings and those in circulation, leading to the common numismatic distinction of ‘savings hoard’ versus ‘circulation hoard,’ though in actuality few hoards are pure examples of either type. According to a frequent argument, contemporaries would spend more energy and attention trying to find a high-value lost coin (e.g., a precious gold coin) compared to a low-value one (a low bronze denomination). Add to this the fact that bronze coins are closer to the color of most soils than gold or silver leads to an over-representation of low-denomination coins in excavation finds.",
+                "Subtype1": 
+                    {
+                        "Name": "High Loss",
+                        "Description": "This is coinage that is frequently lost. This may be because of its value (i.e., comparatively low), but it may also reflect a number of other factors (size, color, etc.). Because of this, such coins are more likely to be lost, and once lost, to not be retrieved. They are more likely to be found in everyday contexts, and therefore are reflected more in finds from excavations and in single finds."
+                    },
+                "Subtype2": 
+                    {
+                        "Name": "Low Loss",
+                        "Description": "This is coinage that is infrequently lost. This may be on account of its high value (being made of gold or silver metal, for example), or because of other factors, such as size, shape, or color. Such coins, because they are lost less (or are sought after more, when they are), are seldom found in everyday contexts, and therefore less common in excavation finds and single finds. They are more likely to be found in hoards or in graves."
+                    },
+                }
+    ]
+}
