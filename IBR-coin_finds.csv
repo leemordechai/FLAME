@@ -1,0 +1,46 @@
+,hoard_id,name,startDate,endDate,type_find,hoard?,excavation?,single?,num_coins,num_known_coins,num_unknown_coins,relevant_coin_IDs,year_found,year_end_found,comments,lat,long,certainty,references,owner,created,imported
+6,IBR-DY-1,Los Mondragones (Granada) villa excavation,117,395,,0.0,1.0,0.0,8.0,,,"p 1048, 2–3; p 1049, 1–3",2013.0,2013.0,,37.191977,-3.611476,highest,Pérez Tovar 2016,DavidYoon,2021-01-01,2021-08-09 16:08:12.559428
+7,IBR-DY-2,Algeciras,704,712,,0.0,0.0,1.0,1.0,,,875,,,,36.1275,-5.453889,lower,Gaillard 1854,DavidYoon,2021-01-01,2021-08-09 16:08:12.559428
+8,IBR-DY-3,Banyoles,711,718,,0.0,0.0,1.0,1.0,,,87,1955.0,1955.0,,42.119444,2.766389,highest,Mateu y Llopis 1956,DavidYoon,2021-01-01,2021-08-09 16:08:12.559428
+9,IBR-DY-4,Cádiz,699,699,,0.0,0.0,1.0,1.0,,,1102,,,,36.535,-6.2975,lower,Gaillard 1854,DavidYoon,2021-01-01,2021-08-09 16:08:12.559428
+10,IBR-DY-5,Cádiz,708,712,,0.0,0.0,1.0,1.0,,,1100,,,,36.535,-6.2975,lower,Gaillard 1854,DavidYoon,2021-01-01,2021-08-09 16:08:12.559428
+11,IBR-DY-6,Cádiz,716,716,,0.0,0.0,1.0,1.0,,,872,,,,36.535,-6.2975,lower,Gaillard 1854,DavidYoon,2021-01-01,2021-08-09 16:08:12.559428
+12,IBR-DY-7,Carmona,711,714,,0.0,0.0,1.0,1.0,,,874,,,,37.466667,-5.633333,lower,Gaillard 1854,DavidYoon,2021-01-01,2021-08-09 16:08:12.559428
+13,IBR-DY-8,Carteya,717,717,,0.0,0.0,1.0,1.0,,,8,1940.0,1940.0,,36.185524,-5.408301,lower,Balaguer 1976,DavidYoon,2021-01-01,2021-08-09 16:08:12.559428
+14,IBR-DY-9,near Córdoba,712,712,,0.0,0.0,1.0,1.0,,,873,,,,37.884507,-4.779568,lower,Gaillard 1854 no. 873,DavidYoon,2021-01-01,2021-08-09 16:08:12.559428
+15,IBR-DY-10,Córdoba,711,714,,0.0,0.0,1.0,2.0,,,10,,,,37.884507,-4.779568,lower,Balaguer 1976,DavidYoon,2021-01-01,2021-08-09 16:08:12.559428
+16,IBR-DY-11,Lugo,711,717,,0.0,0.0,1.0,1.0,,,,1945.0,1946.0,,43.0063,-7.557,highest,Cebreiro Ares 2018,DavidYoon,2021-01-01,2021-08-09 16:08:12.559428
+17,IBR-DY-12,near Ronda,698,711,,0.0,0.0,1.0,2.0,,,876–877,,,,36.746111,-5.161111,lower,Gaillard 1854,DavidYoon,2021-01-01,2021-08-09 16:08:12.559428
+18,IBR-DY-13,Sagunto,703,706,,0.0,0.0,1.0,1.0,,,13,,,,39.6757,-0.2774,lower,Balaguer 1976,DavidYoon,2021-01-01,2021-08-09 16:08:12.559428
+19,IBR-DY-14,Setúbal,717,717,,0.0,0.0,1.0,1.0,,,729,,,,38.524306,-8.892611,lower,Mateu y Llopis 1954,DavidYoon,2021-01-01,2021-08-09 16:08:12.559428
+20,IBR-DY-15,Sevilla,650,700,,0.0,0.0,1.0,1.0,,,1101,,,,37.39,-5.99,lower,Gaillard 1854,DavidYoon,2021-01-01,2021-08-09 16:08:12.559428
+21,IBR-DY-16,"Vale de Açor, Mértola",717,1146,,1.0,0.0,0.0,91.0,,,16,1954.0,1954.0,"Scattered hoard of more than 91 coins, mostly Almoravid and Taifa; the one transitional dinar may not be genuinely associated with the later coins.",37.79194,-7.85413,highest,Balaguer 1976,DavidYoon,2021-01-01,2021-08-09 16:08:12.559428
+22,IBR-DY-17,near Écija,710,713,,1.0,0.0,0.0,4.0,,,1–4,,,,37.533333,-5.083333,lower,Pliego 2001,DavidYoon,2021-01-01,2021-08-09 16:08:12.559428
+23,IBR-DY-18,near La Carolina,713,713,,0.0,0.0,1.0,1.0,,,1,,,,38.266667,-3.616667,lower,González and Martínez 2017,DavidYoon,2021-01-01,2021-08-09 16:08:12.559428
+24,IBR-DY-19,near Los Villares de Andújar,712,712,,0.0,0.0,1.0,1.0,,,2,,,,38.030217,-4.0224375,lower,González and Martínez 2017,DavidYoon,2021-01-01,2021-08-09 16:08:12.559428
+25,IBR-DY-20,Los Villares de Andújar,712,714,,0.0,0.0,1.0,1.0,,,3,,,,38.030217,-4.0224375,highest,González and Martínez 2017,DavidYoon,2021-01-01,2021-08-09 16:08:12.559428
+26,IBR-DY-21,near Jabalquinto,711,713,,0.0,0.0,1.0,1.0,,,4,,,,38.016667,-3.716667,lower,González and Martínez 2017,DavidYoon,2021-01-01,2021-08-09 16:08:12.559428
+27,IBR-DY-22,"Castell de la Vilavella (La Vilavella, Castelló)",-221,1249,,0.0,0.0,1.0,46.0,,,51,,,,39.86238,-0.187766,highest,Gomis 1993,DavidYoon,2021-01-01,2021-08-09 16:08:12.559428
+28,IBR-DY-23,"Benicató (Nules, Castelló)",-127,395,,0.0,0.0,1.0,31.0,,,17–31,,,,39.8329431,-0.14602,highest,Gomis 1993,DavidYoon,2021-01-01,2021-08-09 16:08:12.559428
+29,IBR-DY-24,"El Secanet (La Vilavella, Castelló)",14,1100,,0.0,0.0,1.0,8.0,,,76,,,,39.851384,-0.183333,highest,Gomis 1993,DavidYoon,2021-01-01,2021-08-09 16:08:12.559428
+30,IBR-DY-25,"Camino de Torre Motxa (Nules, Castelló)",-150,353,,0.0,0.0,1.0,10.0,,,105,,,,39.84244,-0.170113,highest,Gomis 1993,DavidYoon,2021-01-01,2021-08-09 16:08:12.559428
+31,IBR-DY-26,Garraf (Barcelona),696,745,,1.0,0.0,0.0,176.0,,,,1954.0,1954.0,Hoard originally contained at least 200 coins; partially dispersed before recording.,41.252778,1.901667,highest,Mateu y Llopis 1954,DavidYoon,2021-01-01,2021-08-09 16:08:12.559428
+32,IBR-DY-27,Carmona,698,753,,1.0,0.0,0.0,146.0,,,,1907.0,1907.0,Hoard originally contained at least 200 coins; partially dispersed before recording.,37.466,-5.565,highest,Canto and Martín 2011-12,DavidYoon,2021-01-01,2021-08-09 16:08:12.559428
+33,IBR-DY-28,Azanuy,705,732,,1.0,0.0,0.0,6.0,,,1–6,1912.0,1913.0,"Hoard originally contained around a dozen coins, of which Codera obtained six for study.",41.966667,0.3,lower,Codera 1913,DavidYoon,2021-01-01,2021-08-09 16:08:12.559428
+34,IBR-DY-29,Yecla,709,725,,1.0,0.0,0.0,5.0,,,,1850.0,1880.0,Hoard of unknown size from which Codera obtained five coins for study.,38.616669,-1.116669,lower,Codera 1913,DavidYoon,2021-01-01,2021-08-09 16:08:12.559428
+35,IBR-DY-30,Alcaudete (Jaén),698,733,,1.0,0.0,0.0,14.0,,,,,,,37.583333,-4.1,lower,Cano Ávila 1989,DavidYoon,2021-01-01,2021-08-09 16:08:12.559428
+36,IBR-DY-31,Montillana-Iznalloz (Granada),698,753,,1.0,0.0,0.0,87.0,,,1–87,1972.0,1972.0,"Hoard originally contained 891 coins, of which Morgenstern obtained 87 for study.",37.48,-3.565,lower,Morgenstern 1980,DavidYoon,2021-01-01,2021-08-09 16:08:12.559428
+37,IBR-DY-32,Relleu,711,912,,1.0,0.0,0.0,27.0,,,"695–706, 710–711, 715, 717",,,,38.587222,-0.311389,moderate,Doménech 2003,DavidYoon,2021-01-01,2021-08-09 16:08:12.559428
+38,IBR-DY-33,near Tibi,716,1075,,0.0,0.0,1.0,7.0,,,589–590,,,,38.533333,-0.583333,moderate,Doménech 2003,DavidYoon,2021-01-01,2021-08-09 16:08:12.559428
+39,IBR-DY-34,Muchamiel,716,1248,,0.0,0.0,1.0,10.0,,,12–14,,,,38.413611,-0.445556,moderate,Doménech 2003,DavidYoon,2021-01-01,2021-08-09 16:08:12.559428
+40,IBR-DY-35,Fontcalent,711,719,,0.0,0.0,1.0,1.0,,,721,,,,38.352306,-0.590386,highest,Doménech 2003,DavidYoon,2021-01-01,2021-08-09 16:08:12.559428
+41,IBR-DY-36,province of Alacant,699,742,,1.0,0.0,0.0,46.0,,,,1877.0,1877.0,"Codera reported that buyer had obtained 46 coins from a larger hoard, of which he described 14 or 15.",38.5,-0.5,moderate,Codera 1877,DavidYoon,2021-01-01,2021-08-09 16:08:12.559428
+42,IBR-DY-37,Castillo del Río (Aspe),-350,1236,,0.0,0.0,1.0,10.0,,,294–295,,,Stray finds include 10 described coins plus an unspecified number of Late Roman coins,38.353131,-0.732906,highest,Doménech 2003,DavidYoon,2021-01-01,2021-08-09 16:08:12.559428
+43,IBR-DY-38,"Los Villares, Quintana del Marco",612,621,,0.0,0.0,1.0,1.0,,,,,,,42.21857,5.84301,highest,Regueras and Rodríguez 2017,DavidYoon,2021-01-01,2021-08-09 16:08:12.559428
+44,IBR-DY-39,"El Piélago, Cimanes de la Vega",713,714,,0.0,0.0,1.0,1.0,,,,,,,42.117222,-5.599444,highest,Regueras and Rodríguez 2017,DavidYoon,2021-01-01,2021-08-09 16:08:12.559428
+45,IBR-DY-40,"El Frare, Crevillent",716,1350,,0.0,0.0,1.0,51.0,,,326–327,,,,38.28,-0.795,moderate,Doménech 2003,DavidYoon,2021-01-01,2021-08-09 16:08:12.559428
+46,IBR-DY-41,"L'Arquet, Crevillent",253,800,,0.0,0.0,1.0,6.0,,,308,,,,38.241,-0.792,moderate,Doménech 2003,DavidYoon,2021-01-01,2021-08-09 16:08:12.559428
+47,IBR-DY-42,Orihuela,705,1142,,0.0,0.0,1.0,40.0,,,637–640,,,,38.085556,-0.946944,moderate,Doménech 2003,,2021-01-01,2021-08-09 16:08:12.559428
+48,IBR-DY-43,Baena,698,754,,1.0,0.0,0.0,351.0,,,,1924.0,1924.0,,37.616667,-4.316667,moderate,Martín Escudero 2005,,2021-01-01,2021-08-09 16:08:12.559428
+50,IBR-AK-1,Badajoz ,601,603,,0.0,1.0,1.0,1.0,,,160(b)5,,,,38.880278,-6.975278,lower,Pliego 2009,,2021-01-01,2021-08-09 16:08:12.559428
+61,IBR-AK-200,"S. Vincens de Obiols, Berga, Barcelona",687,702,,0.0,1.0,1.0,1.0,,,696(h)1,1960.0,1960.0,,42.061214,1.866354,highest,Pliego 2009,AndrewKurt,2021-01-01,2021-08-09 16:08:12.559428
