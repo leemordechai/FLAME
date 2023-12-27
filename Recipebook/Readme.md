@@ -3,7 +3,7 @@ To supply your own data for FLAME's recipe book, it is best to use the suggested
 
 A few words on the organization of the data. FLAME and its tools work through two main types of data: Coin Finds, which correspond to coins found at a specific site and a specific context (e.g. an excavation, a hoard, a single find) and Coin Groups, which correspond to a group of coins within the find that share a series of important features. In FLAME these important features include the dates of the coin, its metal and denomination, and its mint. The different sheets in the Excel file are connected based on the relevant ID numbers. These allow the code to create a whole connected ("relational") database out of these few separate tables.
 
-1. ####CoinFindings sheet
+####CoinFindings sheet
 * ID - the ID number of the find. This should be an arbitrary and unique number (integer), and is responsible for the key connection between the CoinFindings sheet and the coin_groups sheet. Necessary for the code to run. 
 * cf_name - the name of the find; free text. This is important to identify the find. 
 * cf_place_name - a Pleiades ID (if relevant). Can be left blank.
@@ -29,7 +29,7 @@ A few words on the organization of the data. FLAME and its tools work through tw
 * Tag_ID - Irrelevant. 
 * Dataset_IDs - Irrelevant.
 
-2. ####coin_groups
+####coin_groups
 * cgID - the coin group ID. An arbitrary and unique number (integer). Necessary.
 * cg_num_coins - the number of coins in the coin group, i.e. share the key characteristics below.
 * cg_mintner - irrelevant. 
@@ -56,16 +56,16 @@ A few words on the organization of the data. FLAME and its tools work through tw
 * IsMinter - irrelevant.
 * Imported - irrelevant.
 
-3. ####Metals
+####Metals
 * ID - the metal ID. An arbitrary and unique number (integer). Necessary.
 * MetalName - the name of the metal (e.g. gold).
 
-4. ####Denominations
+####Denominations
 * ID - the denomination ID. An arbitrary and unique number (integer). Necessary.
 * DenominationName - the name of the denomination
 * Metal_ID - the corresponding metal ID from the Metals sheet
 
-5. ####Dynasties
+####Dynasties
 * ID - the dynasty's (or other political group name) ID. An arbitrary and unique number (integer). Necessary.
 * DynastyName - the name of the dynasty (or other political group name), e.g. Romans.
 
