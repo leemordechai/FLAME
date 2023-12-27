@@ -1,7 +1,7 @@
 To supply your own data for FLAME's recipe book, it is best to use the suggested template (here). Adding more columns is not a problem, although they would not be analyzed in the current state of things. Note that each field requires a different type of input (e.g. text, numbers, TRUE/FALSE). Not all the columns that do exist are critical for the code in the cookbook to run, and we list a general priority below. 
 
 1. CoinFindings sheet
-* ID - the ID number of the find. This should be an arbitrary number (integer), and is responsible for the key connection between the CoinFindings sheet and the coin_groups sheet. Necessary for the code to run. 
+* ID - the ID number of the find. This should be an arbitrary and unique number (integer), and is responsible for the key connection between the CoinFindings sheet and the coin_groups sheet. Necessary for the code to run. 
 * cf_name - the name of the find; free text. This is important to identify the find. 
 * cf_place_name - a Pleiades ID (if relevant). Can be left blank.
 * cf_custom_place_name - the name of the place of the coind find. Should have some value. 
@@ -27,5 +27,31 @@ To supply your own data for FLAME's recipe book, it is best to use the suggested
 * Dataset_IDs - Irrelevant.
 
 2. coin_groups
+* cgID - the coin group ID. An arbitrary and unique number (integer). Necessary.
+* cg_num_coins - the number of coins in the coin group, i.e. share the key characteristics below.
+* cg_mintner - irrelevant. 
+* cg_unknown_mint_area - TRUE if the location in which the coins were minted is unknown or vague; FALSE if not. 
+* cg_start_year - the earliest year in which the coins in the coin group could have been produced. Integers only. Important for any analysis of coins. 
+* cg_end_year - the latest year in which the coins in the coin group could have been produced. Integers only. Important for any analysis of coins. 
+* cg_vague_time - FALSE if we know the dates of the two fields above with certainty, TRUE if they are otherwise vague. 
+* cg_user - the name of the user who inputted this coin group. Not necessary. 
+* cg_comment - any comments on the coin group. Not necessary.
+* cg_custom_start_century - Irrelevant.
+* cg_custom_end_century - Irrelevant.
+* cg_imitation_start_year - Irrelevant.
+* cg_imitation_end_year - Irrelevant.
+* cg_imitation_ruler - Irrelevant.
+* cg_imitation_dynasty - Irrelevant.
+* Denomination_ID - ID of the denomination (see Denominations sheet). Necessary for any kind of filters using coin denominations.
+* CoinFinding_ID - ID of the coin find (see CoinFindings sheet). Necessary to connect the data. 
+* Ruler_ID - ID of the ruler (see Rulers sheet). Not important. 
+* Dynasty_ID - ID of the dynasty (see Dynasties sheet). Not important. 
+* Mint_ID - ID of the mint (see Mints sheet). Necessary to display any connections to mints on the map. 
+* DateEntered - the date in which the coins were entered (format is 12/31/2020). Not necessary. 
+* CustomStartPeriodID - irrelevant. 
+* CustomEndPeriodID - irrelevant.
+* IsMinter - irrelevant.
+* Imported - irrelevant.
+
 
 
