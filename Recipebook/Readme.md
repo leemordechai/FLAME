@@ -1,4 +1,7 @@
+## Supply your own data for FLAME's recipe book
 To supply your own data for FLAME's recipe book, it is best to use the suggested template (here). Adding more columns is not a problem, although they would not be analyzed in the current state of things. Note that each field requires a different type of input (e.g. text, numbers, TRUE/FALSE). Not all the columns that do exist are critical for the code in the cookbook to run, and we list a general priority below. 
+
+A few words on the organization of the data. FLAME and its tools work through two main types of data: Coin Finds, which correspond to coins found at a specific site and a specific context (e.g. an excavation, a hoard, a single find) and Coin Groups, which correspond to a group of coins within the find that share a series of important features. In FLAME these important features include the dates of the coin, its metal and denomination, and its mint. The different sheets in the Excel file are connected based on the relevant ID numbers. These allow the code to create a whole connected ("relational") database out of these few separate tables.
 
 1. CoinFindings sheet
 * ID - the ID number of the find. This should be an arbitrary and unique number (integer), and is responsible for the key connection between the CoinFindings sheet and the coin_groups sheet. Necessary for the code to run. 
@@ -44,7 +47,7 @@ To supply your own data for FLAME's recipe book, it is best to use the suggested
 * cg_imitation_dynasty - Irrelevant.
 * Denomination_ID - ID of the denomination (see Denominations sheet). Necessary for any kind of filters using coin denominations.
 * CoinFinding_ID - ID of the coin find (see CoinFindings sheet). Necessary to connect the data. 
-* Ruler_ID - ID of the ruler (see Rulers sheet). Not important. 
+* Ruler_ID - irrelevant.
 * Dynasty_ID - ID of the dynasty (see Dynasties sheet). Not important. 
 * Mint_ID - ID of the mint (see Mints sheet). Necessary to display any connections to mints on the map. 
 * DateEntered - the date in which the coins were entered (format is 12/31/2020). Not necessary. 
@@ -53,5 +56,18 @@ To supply your own data for FLAME's recipe book, it is best to use the suggested
 * IsMinter - irrelevant.
 * Imported - irrelevant.
 
+3. Metals
+* ID - the metal ID. An arbitrary and unique number (integer). Necessary.
+* MetalName - the name of the metal (e.g. gold).
+
+4. Denominations
+* ID - the denomination ID. An arbitrary and unique number (integer). Necessary.
+* DenominationName - the name of the denomination
+* Metal_ID - the corresponding metal ID from the Metals sheet
+
+5. Dynasties
+* ID - the dynasty's (or other political group name) ID. An arbitrary and unique number (integer). Necessary.
+* DynastyName - the name of the dynasty (or other political group name), e.g. Romans. 
+![image](https://github.com/leemordechai/FLAME/assets/16713928/ff8234af-a2ab-4cd5-911d-84cd4798c9ac)
 
 
