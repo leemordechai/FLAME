@@ -56,6 +56,15 @@ A few words on the organization of the data. FLAME and its tools work through tw
 * IsMinter - irrelevant.
 * Imported - irrelevant.
 
+#### Mints
+* ID - the Mint ID. An arbitrary and unique number (integer). Necessary to link between mints and finds.
+* location_title - the ancient name of the location of the mint. Not necessary.
+* location_modern_title - the ancient name of the location of the mint. Not necessary.
+* location_other_title - an alternative name of the location of the mint. Not necessary.
+* location_uncertain - 0 if the location is certain, 1 if uncertain. 
+* location_lat, location_long - the coordinates (longitude and langitude of where the coins were minted). Necessary for any placement of the mint on a map. Must be numbers with a decimal point.  
+* LegendID - irrelevant. 
+
 #### Metals
 * ID - the metal ID. An arbitrary and unique number (integer). Necessary.
 * MetalName - the name of the metal (e.g. gold).
