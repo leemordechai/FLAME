@@ -1,7 +1,12 @@
 ## Supply your own data for FLAME's recipe book
 To supply your own data for FLAME's recipe book, it is best to use the suggested template (here). Adding more columns is not a problem, although they would not be analyzed in the current state of things. Note that each field requires a different type of input (e.g. text, numbers, TRUE/FALSE). Not all the columns that do exist are critical for the code in the cookbook to run, and we list a general priority below. 
 
-A few words on the organization of the data. FLAME and its tools work through two main types of data: Coin Finds, which correspond to coins found at a specific site and a specific context (e.g. an excavation, a hoard, a single find) and Coin Groups, which correspond to a group of coins within the find that share a series of important features. In FLAME these important features include the dates of the coin, its metal and denomination, and its mint. The different sheets in the Excel file are connected based on the relevant ID numbers. These allow the code to create a whole connected ("relational") database out of these few separate tables.
+A few words on the organization of the data. FLAME and its tools work through two main types of data: Coin Finds, which correspond to coins found at a specific site and a specific context (e.g. an excavation, a hoard, a single find) and Coin Groups, which correspond to a group of coins within the find that share a series of important features. In FLAME these important features include the dates of the coin, its metal and denomination, and its mint. The different sheets in the Excel file are connected based on the relevant ID numbers. These allow the code to create a whole connected ("relational") database out of these few separate tables. The connection between both types of information is visualized below.
+
+<img width="463" alt="image" src="https://github.com/leemordechai/FLAME/assets/16713928/167c51c9-2f1f-408f-b195-1c486413ba03">
+
+Although FLAME's tools will conduct a few automated tests on your data and provide some basic feedback, please note that you are responsible for the correct formatting of your data following the schema below. To facilitate cleaning your data we recommend using an external program such as OpenRefine ([https://openrefine.org/](url)).  
+
 
 #### CoinFindings sheet
 * ID - the ID number of the find. This should be an arbitrary and unique number (integer), and is responsible for the key connection between the CoinFindings sheet and the coin_groups sheet. Necessary for the code to run. 
