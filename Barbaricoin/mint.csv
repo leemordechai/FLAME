@@ -1,0 +1,96 @@
+id,Name_de,Name_en,Name,Shortcut,Description,Latitude,Longitude,Nomisma,Gnd
+1,NULL,Bilbilis,NULL,Bil,NULL,NULL,NULL,bilbilis,NULL
+2,NULL,Calagurris,NULL,Calagurris,NULL,NULL,NULL,calagurris_julia,NULL
+3,NULL,Caulonia,NULL,Cau,NULL,NULL,NULL,caulonia,NULL
+4,NULL,Celsa,NULL,Cel,NULL,NULL,NULL,celsa,NULL
+5,NULL,Osca,NULL,Osc,NULL,NULL,NULL,osca,NULL
+6,NULL,Emporion,NULL,Emp,NULL,NULL,NULL,emporiae,NULL
+7,NULL,Emerita,NULL,Emr,NULL,NULL,NULL,emerita,NULL
+10,NULL,Tarraco,NULL,Tar,NULL,NULL,NULL,tarraco,NULL
+12,NULL,Turiaso,NULL,Tur,NULL,NULL,NULL,turiaso,NULL
+13,NULL,Hispania,NULL,Hisp,NULL,NULL,NULL,NULL,NULL
+15,NULL,Camulodunum,NULL,Cam,NULL,NULL,NULL,camulodunum,NULL
+16,NULL,Londinium,NULL,Lon,NULL,NULL,NULL,londinium,NULL
+17,NULL,Ambianum,NULL,Amb,NULL,NULL,NULL,ambianum,NULL
+18,NULL,"Colonia CAA",NULL,Col,NULL,NULL,NULL,colonia_claudia_ara_agrippinensium,NULL
+20,NULL,Treveri,NULL,Tre,NULL,NULL,NULL,treveri,NULL
+25,NULL,Lugdunum,NULL,Lug,NULL,NULL,NULL,lugdunum,NULL
+30,NULL,Vienna,NULL,Vie,NULL,NULL,NULL,NULL,NULL
+33,NULL,Arausio,NULL,Ara,NULL,NULL,NULL,NULL,NULL
+34,NULL,Narbo,NULL,Nar,NULL,NULL,NULL,narbo,NULL
+35,NULL,Nemausus,NULL,Nem,NULL,NULL,NULL,nemausus,NULL
+39,NULL,Arelate,NULL,Arl,NULL,NULL,NULL,arelate,NULL
+45,,Gallia,NULL,Gall,,NULL,NULL,,
+48,NULL,Mediolanum,NULL,Med,NULL,NULL,NULL,mediolanum,NULL
+50,NULL,Roma,NULL,Rom,NULL,NULL,NULL,rome,NULL
+56,NULL,Ostia,NULL,Ost,NULL,NULL,NULL,ostia,NULL
+57,NULL,Ticinum,NULL,Tic,NULL,NULL,NULL,ticinum,NULL
+58,NULL,Aquileia,NULL,Aqu,NULL,NULL,NULL,aquileia,NULL
+62,NULL,Italia,NULL,Ital,NULL,NULL,NULL,NULL,NULL
+64,NULL,Sicilia,NULL,Sici,NULL,NULL,NULL,NULL,NULL
+66,NULL,Sardinia,NULL,Sard,NULL,NULL,NULL,NULL,NULL
+67,NULL,Carthago,NULL,Kar,NULL,NULL,NULL,carthage,NULL
+68,NULL,Africa,NULL,Afri,NULL,NULL,NULL,NULL,NULL
+69,NULL,Siscia,NULL,Sis,NULL,NULL,NULL,siscia,NULL
+74,NULL,Sirmium,NULL,Sir,NULL,NULL,NULL,sirmium,NULL
+75,NULL,Pautalia,NULL,Pau,NULL,NULL,NULL,pautalia,NULL
+76,NULL,Thessalonica,NULL,The,NULL,NULL,NULL,thessalonica,NULL
+79,,Heracleia,NULL,Her,,NULL,NULL,heracleia_thracica,
+80,NULL,Constantinopolis,NULL,Con,NULL,NULL,NULL,constantinople,NULL
+83,NULL,Nicomedia,NULL,Nio,NULL,NULL,NULL,nicomedia,NULL
+86,NULL,Cyzicus,NULL,Kyz,NULL,NULL,NULL,cyzicus,NULL
+89,,Asia,NULL,Asia,,NULL,NULL,,
+91,NULL,Antiochia,NULL,Ant,NULL,NULL,NULL,antiocheia_syria,NULL
+93,NULL,"Laodicea ad Mare",NULL,Lao,NULL,NULL,NULL,laodiceia_ad_mare,NULL
+95,NULL,Emesa,NULL,Eme,NULL,NULL,NULL,emisa,NULL
+96,NULL,Alexandria,NULL,Ale,NULL,NULL,NULL,alexandreia_egypt,NULL
+97,NULL,Cyrenaica,NULL,Kyre,NULL,NULL,NULL,NULL,NULL
+98,NULL,Tripolis,NULL,Trp,NULL,NULL,NULL,tripolis_phoenicia,NULL
+99,NULL,"Greek East",NULL,gOst,NULL,NULL,NULL,NULL,NULL
+101,NULL,"Western mint",NULL,westl.,NULL,NULL,NULL,NULL,NULL
+102,NULL,"Eastern mint",NULL,östl.,NULL,NULL,NULL,NULL,NULL
+103,Wandermünzstätte,"Mobile mint",NULL,WMz,,NULL,NULL,,
+104,"Münzstätte nicht bekannt","Uncertain mint",NULL,?,,NULL,NULL,,
+105,"unidentifizierte Münzstätte","Unidentified mint",NULL,–,,NULL,NULL,,
+107,,"Unofficial mint",NULL,unoff,,NULL,NULL,,
+109,NULL,Germania,NULL,Germ,NULL,NULL,NULL,NULL,NULL
+150,,"Antiocheia ad Pyramum",NULL,AntPyr,,NULL,NULL,antiocheia_ad_pyramum,NULL
+151,NULL,Bursa,NULL,NULL,NULL,NULL,NULL,bursa,NULL
+152,NULL,Carnuntum,NULL,NULL,NULL,NULL,NULL,carnuntum,NULL
+153,NULL,Iantinum,NULL,NULL,NULL,NULL,NULL,iantinum,NULL
+154,NULL,Pincum,NULL,NULL,NULL,NULL,NULL,pincum,NULL
+155,Ravenna,Ravenna,NULL,Rav,,NULL,NULL,ravenna,NULL
+156,NULL,Rotomagus,NULL,NULL,NULL,NULL,NULL,rotomagus,NULL
+157,NULL,Sarmizegetusa,NULL,NULL,NULL,NULL,NULL,sarmizegetusa,NULL
+158,NULL,Serdica,NULL,NULL,NULL,NULL,NULL,serdica,NULL
+200,Corduba,Corduba,NULL,Cor,NULL,NULL,NULL,corduba,NULL
+201,"Colonia Patricia","Colonia Patricia",NULL,Pat,,NULL,NULL,colonia_patricia,NULL
+202,"Agrippia Caesarea","Agrippia Caesarea",NULL,AgrC,"The mint at the ancient site of Agrippia Caesarea (Phanagoria) in Bosporus.",NULL,NULL,agrippia-caesarea_phanagoria,NULL
+203,"Caesarea in Cappadocia","Caesarea in Cappadocia",NULL,CaCa,NULL,NULL,NULL,caesareia_cappadocia,NULL
+204,"Caesareia Samariae","Caesareia Samariae",NULL,CaSa,NULL,NULL,NULL,caesareia_samaria,NULL
+205,Smyrna,Smyrna,NULL,NULL,NULL,NULL,NULL,smyrna,NULL
+206,Cilbiani,Cilbiani,NULL,NULL,NULL,NULL,NULL,NULL,NULL
+207,Kremna,Cremna,NULL,Cre,,NULL,NULL,cremna,NULL
+208,"Antiochia in Pisidien","Antiochia in Pisidia",NULL,AntPis,"The mint at the ancient site of Antioch in Pisidia",38.3040000,31.1900000,antiocheia_pisidia,NULL
+209,Syrien,Syria,NULL,Syri,"A mint from the region of Syria which is not more closely indentified",NULL,NULL,,
+210,Kommagene,Commagene,NULL,Comm,"A mint from the region/province of Commagene which is not more closely identified",NULL,NULL,commagene,
+211,Lykien,Lycia,NULL,Lyci,"An undefined mint in the region of Lycia as defined in Head (1911)",NULL,NULL,lycia,NULL
+212,Mittelrhein,"Middle Rhine",NULL,"Middle Rhine","Unidentified Merovingian Mint on MIddle Rhine",NULL,NULL,,NULL
+213,Mainz,Mainz,NULL,,"The mint at the ancient site of Mogontiacum (Mainz) in Germania.",NULL,NULL,mogontiacum,NULL
+214,Perinthos,Perinthos,NULL,,,40.9710000,27.9530000,perinthus,NULL
+215,Beroia,Beroia,NULL,,,NULL,NULL,,NULL
+216,Berytus,Berytus,NULL,,,NULL,NULL,berytus,NULL
+217,Pellene,Pellene,NULL,,,NULL,NULL,pellene,NULL
+218,"Colonia Caesar Augusta","Colonia Caesar Augusta",NULL,,,NULL,NULL,caesaraugusta,NULL
+219,"Östliche Münzstätte","Eastern mint",NULL,östl.,,NULL,NULL,,
+220,"Nicaea in Bythinia","Nicaea in Bythinia",NULL,Nic,,NULL,NULL,nicaea_bithynia,
+221,Rhegium,Rhegium,NULL,Rhe,"The mint at the ancient site of Rhegium in Calabria",NULL,NULL,rhegium,
+222,Viminatium,Viminacium,NULL,Vimi,"The mint at the ancient site of Viminacium in Moesia Superior.",44.7164710,21.1666050,viminacium,NULL
+223,Dacia,Dacia,Dacia,Dac,NULL,NULL,NULL,NULL,NULL
+224,Macedonia,Macedonia,Macedonia,NULL,NULL,NULL,NULL,NULL,NULL
+225,Babylon,Babylon,Babilon,NULL,NULL,NULL,NULL,NULL,NULL
+226,Apollonia,Apollonia,Apollonia,NULL,NULL,NULL,NULL,NULL,NULL
+227,Deultum,Deultum,Deultum,NULL,NULL,NULL,NULL,NULL,NULL
+228,Pergamon,Pergamon,Pergamon,NULL,NULL,NULL,NULL,NULL,NULL
+229,Korinth,Corinth,Korinthosz,NULL,NULL,NULL,NULL,NULL,NULL
+230,Dyrrhachium,Dyrrhachium,NULL,NULL,NULL,NULL,NULL,NULL,NULL

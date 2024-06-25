@@ -1,0 +1,6 @@
+id,Name_de,Name_en,Name,Description,Nomisma
+1,Einzelfund,"Single find",Szórvány,NULL,NULL
+2,Schatzfund,Hoard,Éremkincs,NULL,hoard
+3,Grabfund,"Funerary deposit",Sírmelléklet,NULL,NULL
+4,Weihefund,"Votive deposit","Áldozati lelet",NULL,NULL
+5,Kollektivfund,"Collective deposit",,NULL,NULL

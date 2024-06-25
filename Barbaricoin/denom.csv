@@ -1,0 +1,67 @@
+id,Name_de,Name_en,Name,Description,Nomisma,Shortcut
+1,"1/4 Stater","1/4 stater",NULL,NULL,quarter-stater,1/4Au
+2,"1/8 Stater","1/8 stater",NULL,NULL,eighth-stater,1/8Au
+3,"1/24 Stater","1/24 stater",NULL,NULL,NULL,1/24Au
+4,Aureus,Aureus,Aureus,NULL,aureus,Au
+5,Solidus,Solidus,Solidus,NULL,solidus,Sol
+6,Tremissis,Tremissis,Tremissis,NULL,NULL,Tr
+7,Gold,Gold,Arany,"Unidentified gold denomination",,AV
+8,Silber,Silver,Ezüst,"Unidentified silver denomination",,AR
+9,Siliqua,Siliqua,Siliqua,NULL,siliqua,Sil
+10,"1/2 Siliqua","1/2 siliqua","1/2 siliqua",NULL,half_siliqua,Hsil
+11,"1/4  Siliqua","1/4  siliqua","1/4  siliqua",NULL,NULL,Vsil
+15,Potin,Potin,Potin,NULL,NULL,Pot
+16,Antoninianus,Antoninianus,Antoninianus,NULL,antoninianus,An
+18,Victoriatus,Victoriatus,Victoriatus,NULL,victoriatus,Vic
+19,Denarius,Denarius,Denarius,NULL,denarius,D
+22,Quinarius,Quinarius,Quinarius,NULL,quinarius,Q
+24,"Medaillon (bronze)","Medallion (bronze)","Medallion (bronze)",NULL,NULL,AEMdl
+25,Sestertius,Sestertius,Sestertius,NULL,sestertius,S
+26,Dupondius,Dupondius,Dupondius,NULL,dupondius,Dp
+28,As,As,As,NULL,as,As
+33,Semis,Semis,Semis,NULL,semis,Sem
+35,Triens,Triens,Triens,NULL,triens,Tr
+36,Quadrans,Quadrans,Quadrans,NULL,quadrans,Qd
+38,Sextans,Sextans,Sextans,NULL,solidus,Sex
+39,Follis,Follis,Follis,NULL,follis,Fol
+44,"1/2 Follis","1/2 follis","1/2 follis",NULL,NULL,"1/2 Fol"
+45,"1/4 Follis","1/4 follis","1/4 follis",NULL,NULL,"1/4 Fol"
+46,Doppelmaiorina,"Double maiorina","Dupla maiorina",NULL,NULL,Dmai
+47,Maiorina,Maiorina,Maiorina,NULL,NULL,Mai
+48,Centenionalis,Centenionalis,Centenionalis,NULL,NULL,Cen
+50,"1/2 Centenionalis","1/2 centenionalis","1/2 centenionalis",NULL,NULL,Hce
+52,AE1,AE1,AE1,NULL,ae1,AE1
+53,AE2,AE2,AE2,NULL,ae2,AE2
+54,AE3,AE3,AE3,,ae3,AE3
+56,AE4,AE4,AE4,NULL,ae4,AE4
+59,Minimus,Minimus,Minimus,NULL,NULL,Min
+60,AE,Bronze,Bronz,"Unidentfied bronze denomination",,AE
+62,Eisen,Iron,Vas,NULL,NULL,FE
+63,Blei,Lead,Ólom,NULL,NULL,Pb
+64,Münze,Coin,Érem,NULL,NULL,Mz
+65,Spielmarke,"Gaming token",Játékzseton,NULL,NULL,Spielmarke
+70,Kleinsilber,"Small silver",Kisezüst,NULL,NULL,KS
+73,Tetradrachme,Tetradrachm,Tetradrachma,NULL,tetradrachm,Tdr
+74,Drachme,Drachm,Drachma,NULL,drachma,Dr
+75,Stater,Stater,Stater,NULL,stater,St
+76,Doppelsestertius,"Double sestertius","Dupla sestertius",,double-sestertius,DS
+77,Uncia,Uncia,Uncia,NULL,uncia,Un
+101,Argenteus,Argenteus,Argenteus,NULL,argenteus,NULL
+102,Cistophor,Cistophorus,Cistophorus,NULL,cistophorus,NULL
+103,Doppelaureus,"Double aureus",NULL,NULL,double-aureus,NULL
+104,"Miliarensis (schwer)","Miliarensis (heavy)","Miliarensis (nehéz)",NULL,heavy_miliarensis,NULL
+105,"Miliarensis (leicht)","Miliarensis (light)","Miliarensis (könnyű)",NULL,light_miliarensis,NULL
+106,Miliarensis,Miliarensis,Miliarensis,NULL,miliarensis,NULL
+107,"Quinarius aureus","Quinarius aureus","Quinarius aureus",NULL,quinarius_aureus,NULL
+108,"Siliqua (reduziert)","Siliqua (reduced)","Siliqua (csökkentett)",NULL,reduced_siliqua,NULL
+109,Hemidrachme,Hemidrachm,Hemidrachma,NULL,hemidrachm,NULL
+110,"40 Nummi","40 Nummi","40 Nummi","Byzantine bronze coin of 40 nummi",follis,40Num
+111,Didrachme,Didrachm,Didrachma,"Two drachm unit",didrachm,Didr
+112,AR,AR,AR,Silber,,
+113,AV,AV,AV,Gold,,
+114,"10 Nummi","10 Nummi","10 Nummi","10 Nummi",,
+115,Rbs,"Rainbow cup",NULL,"Rainbow cup, metal uncertain",,
+116,"16 Nummi","16 Nummi","16 Nummi",NULL,NULL,NULL
+117,"20 Nummi","20 Nummi","20 Nummi",NULL,NULL,NULL
+118,"5 Nummi","5 Nummi","5 Nummi",NULL,NULL,NULL
+119,Obol,Obol,Obolos,NULL,NULL,NULL

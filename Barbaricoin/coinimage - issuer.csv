@@ -1,0 +1,147 @@
+id,Name,Name_en,Name_hun,Description,Nomisma
+1,"Q DOCI SAM","Q DOCI SAM",NULL,NULL,NULL
+2,Tiberius,Tiberius,NULL,NULL,tiberius
+4,"Divus Augustus","Divus Augustus",NULL,NULL,NULL
+5,Germanicus,Germanicus,NULL,NULL,germanicus
+6,Titus,Titus,NULL,NULL,titus
+7,Domitianus,Domitianus,NULL,NULL,domitian
+9,"Divus Vespasianus","Divus Vespasianus",NULL,NULL,NULL
+11,Sabina,Sabina,NULL,NULL,sabina
+12,"Antoninus Pius","Antoninus Pius",NULL,NULL,antoninus_pius
+13,Aelius,"Lucius Aelius",NULL,NULL,lucius_aelius
+14,"Marcus Aurelius","Marcus Aurelius",NULL,NULL,marcus_aurelius
+15,"Faustina I.","Faustina I",NULL,NULL,faustina_i
+16,"Diva Faustina I.","Diva Faustina I",NULL,NULL,NULL
+17,"Faustina II.","Faustina II",NULL,NULL,faustina_ii
+19,Lucilla,Lucilla,NULL,NULL,lucilla
+21,Crispina,Crispina,NULL,NULL,crispina
+22,"Iulia Domna","Iulia Domna",NULL,NULL,julia_domna
+23,Caracalla,"Caracalla Caesar",NULL,NULL,caracalla
+25,"Iulia Mamaea","Iulia Mamaea",NULL,NULL,julia_mamaea
+26,"Otacilla Severa","Marcia Otacilia Severa",NULL,,otacilia_severa
+29,"Tetricus II.","Tetricus II",NULL,NULL,tetricus_ii
+30,"Constantius I.","Constantius I Chlorus",NULL,NULL,constantius_chlorus
+31,"Constantinus I.","Constantinus I.",NULL,NULL,constantine_i
+32,Crispus,Crispus,NULL,NULL,crispus
+33,"Constantinus II.","Constantinus II",NULL,NULL,constantine_ii
+34,"Constantius II.","Constantius II",NULL,NULL,constantius_ii
+36,Constans,Constans,NULL,NULL,constans
+37,Delmatius,Delmatius,NULL,NULL,dalmatius
+38,Constantinsöhne,"Sons of Constantine",NULL,NULL,NULL
+39,Helena,Helena,NULL,NULL,helena
+40,"Urbs Roma","Urbs Roma",NULL,NULL,urbs_roma
+41,Constantinopolis,Constantinopolis,NULL,NULL,constantinopolis
+42,"Divus Constantinus I.","Divus Constantinus I",NULL,NULL,
+43,Theodora,Theodora,NULL,NULL,theodora
+44,"Valerianus II.","Valerianus II",NULL,NULL,valerian_ii
+45,"Divus Valerianus II.","Divus Valerianus II",NULL,NULL,NULL
+46,"Iulia Augusta",NULL,NULL,NULL,NULL
+47,"Iulia Maesa","Iulia Maesa",NULL,NULL,julia_maesa
+52,"Pop Romanus","Populus Romanus",NULL,NULL,populus_romanus
+56,Decentius,Decentius,NULL,NULL,decentius
+57,"Divus Claudius II.","Divus Claudius II",NULL,NULL,NULL
+60,KALETEDOY,KALETEDOY,NULL,NULL,NULL
+63,"Constantius Gallus/Iulianus","Constantius Gallus/Iulianus","Constantius Gallus/Iulianus",NULL,NULL
+70,"Iulianus Apostata","Iulianus Apostata",NULL,NULL,julian_the_apostate
+71,Hirtius,HIRTIVS,NULL,NULL,NULL
+101,"Aelia Ariadne","Aelia Ariadne",NULL,NULL,aelia_ariadne
+102,"Aelia Eudocia","Aelia Eudocia",NULL,NULL,aelia_eudocia
+103,"Aelia Eudoxia","Aelia Eudoxia",NULL,NULL,aelia_eudoxia
+104,"Aelia Flacilla","Aelia Flacilla",NULL,NULL,aelia_flacilla
+105,"Aelia Pulcheria","Aelia Pulcheria",NULL,NULL,aelia_pulcheria
+106,"Aelia Verina","Aelia Verina",NULL,NULL,aelia_verina
+107,Agrippa,Agrippa,NULL,NULL,agrippa
+108,"Agrippina die ältere","Agrippina I",NULL,NULL,agrippina_i
+109,"Agrippina die jüngere","Agrippina II",NULL,NULL,agrippina_ii
+110,"Annia Faustina","Annia Faustina",NULL,NULL,annia_faustina
+111,"Annius Verus","Annius Verus",NULL,NULL,annius_verus
+112,"Antonia Minor","Antonia Minor",NULL,NULL,antonia_minor
+113,"Aquilia Severa","Aquilia Severa",NULL,NULL,aquilia_severa
+114,Britannicus,Britannicus,NULL,NULL,britannicus
+115,Carinus,Carinus,NULL,NULL,carinus
+116,"Claudia Antonia","Claudia Antonia",NULL,NULL,claudia_antonia
+117,"Claudia Octavia","Claudia Octavia",NULL,NULL,claudia_octavia
+118,Commodus,Commodus,NULL,NULL,commodus
+119,Constantia,Constantia,NULL,NULL,constantia
+120,"Constantius Gallus","Constantius Gallus",NULL,NULL,constantius_gallus
+121,"Cornelia Supera","Cornelia Supera",NULL,NULL,cornelia_supera
+122,"Daughter of Vitellius","Daughter of Vitellius",NULL,NULL,daughter_of_vitellius
+123,Diadumenianus,Diadumenianus,NULL,NULL,diadumenian
+124,"Didia Clara","Didia Clara",NULL,NULL,didia_clara
+125,"Diva Domitilla","Diva Domitilla",NULL,NULL,domitilla_the_elder
+126,"Diva Faustina II.","Diva Faustina II",NULL,NULL,NULL
+127,"Diva Iulia Domna","Diva Iulia Domna",NULL,NULL,NULL
+128,"Diva Iulia Maesa","Diva Iulia Maesa",NULL,NULL,NULL
+129,"Diva Livia","Diva Livia",NULL,NULL,livia
+130,"Diva Marciana","Diva Marciana",NULL,NULL,NULL
+131,"Diva Mariniana","Diva Mariniana",NULL,NULL,egnatia_mariniana
+132,"Diva Matidia","Diva Matidia",NULL,NULL,matidia
+133,"Diva Paulina","Diva Paulina",NULL,NULL,caecilia_paulina
+134,"Diva Sabina","Diva Sabina",NULL,NULL,NULL
+135,"Divus Antoninus Pius","Divus Antoninus Pius",NULL,NULL,NULL
+136,"Divus Caracalla","Divus Caracalla",NULL,NULL,NULL
+137,"Divus Carus","Divus Carus",NULL,NULL,NULL
+138,"Divus Commodus","Divus Commodus",NULL,NULL,NULL
+139,"Divus Hadrianus","Divus Hadrianus",NULL,NULL,NULL
+140,"Divus Lucius Verus","Divus Lucius Verus",NULL,NULL,NULL
+141,"Divus Marcus Aurelius","Divus Marcus Aurelius",NULL,NULL,NULL
+142,"Divus Maximianus Herculeus","Divus Maximianus Herculeus",NULL,NULL,NULL
+143,"Divus Nerva","Divus Nerva",NULL,NULL,NULL
+144,"Divus Nigrinianus","Divus Nigrinianus",NULL,NULL,nigrinian
+145,"Divus Numerianus","Divus Numerianus",NULL,NULL,NULL
+146,"Divus Pertinax","Divus Pertinax",NULL,NULL,NULL
+147,"Divus Romulus","Divus Romulus",NULL,NULL,valerius_romulus
+148,"Divus Septimius Severus","Divus Septimius Severus",NULL,NULL,NULL
+149,"Divus Severus Alexander","Divus Severus Alexander",NULL,NULL,NULL
+150,"Divus Traianus","Divus Traianus",NULL,NULL,NULL
+151,"Divus Traianus Pater","Divus Traianus Pater",NULL,NULL,NULL
+152,Domitia,Domitia,NULL,,domitia
+153,Drusilla,Drusilla,NULL,NULL,drusilla
+154,"Drusus Caesar","Drusus Caesar",NULL,NULL,drusus_caesar
+155,"Drusus der ältere","Drusus the Elder",NULL,NULL,drusus_the_elder
+156,"Drusus der jüngere","Drusus the Younger",NULL,NULL,drusus_the_younger
+157,Dryantilla,Dryantilla,NULL,NULL,dryantilla
+158,Euphemia,Euphemia,NULL,NULL,euphemia
+159,Fausta,Fausta,NULL,NULL,fausta
+160,"Galeria Valeria","Galeria Valeria",NULL,NULL,galeria_valeria
+161,"Gallia Placidia","Gallia Placidia",NULL,NULL,galla_placidia
+162,"Geta Caesar","Geta Caesar",NULL,NULL,geta
+163,"Gordianus III.","Gordianus III",NULL,NULL,gordian_iii
+164,"Gratia Honoria","Gratia Honoria",NULL,NULL,grata_honoria
+165,Hannibalianus,Hannibalianus,NULL,NULL,hannibalianus
+166,"Herennia Etruscilla","Herennia Etruscilla",NULL,NULL,herennia_etruscilla
+167,"Herennius Etruscus","Herennius Etruscus",NULL,NULL,NULL
+168,Hostilianus,Hostilianus,NULL,NULL,hostilian
+169,"Iulia Livilla","Iulia Livilla",NULL,NULL,julia_livilla
+170,"Iulia Paula","Iulia Paula",NULL,NULL,julia_paula
+171,"Iulia Soaemias","Iulia Soaemias",NULL,NULL,julia_soaemias
+172,"Iulia Titi Flavia","Iulia Titi",NULL,"Flavia Julia Titi (13 September 64 – 91) was the daughter of the Emperor Titus from his second marriage to Marcia Furnilla. She became the mistress of the Emperor Domitian.",julia_titi
+173,"L. Vitellius Pater","L. Vitellius Pater",NULL,NULL,l._vitellius_pater
+174,"Licinia Eudoxia","Licinia Eudoxia",NULL,NULL,licinia_eudoxia
+175,"Licinius II.","Licinius II",NULL,NULL,licinius_ii
+176,"Lucius Caesar","Lucius Caesar",NULL,NULL,lucius_caesar
+177,"Magnia Urbica","Magnia Urbica",NULL,NULL,magnia_urbica
+178,"Manlia Scantilla","Manlia Scantilla",NULL,NULL,manlia_scantilla
+179,Marciana,Marciana,NULL,NULL,ulpia_marciana
+180,"Maximianus Galerius","Maximianus Galerius",NULL,NULL,galerius
+181,"Maximinus II. Daia","Maximinus II Daia",NULL,NULL,maximinus_daia
+182,Maximus,Maximus,NULL,"Maximus son of Maximinus I",gaius_julius_verus_maximus
+183,Messalina,Messalina,NULL,NULL,messalina
+184,Nero,Nero,NULL,NULL,nero
+185,"Nero Caesar","Nero Caesar",NULL,NULL,nero_caesar
+186,Numerianus,Numerianus,NULL,NULL,numerian
+187,"Philippus II.","Philippus II",NULL,NULL,philippus_ii
+188,Plautilla,Plautilla,NULL,NULL,plautilla
+189,Plotina,Plotina,NULL,NULL,plotina
+190,"Sabina Tranquillina","Sabina Tranquillina",NULL,NULL,sabinia_tranquillina
+191,"Sallustia Orbiana","Sallustia Orbiana",NULL,NULL,sallustia_orbiana
+192,Salonina,Salonina,NULL,NULL,cornelia_salonina
+193,Saloninus,Saloninus,NULL,NULL,saloninus
+194,"Severus Alexander","Severus Alexander",NULL,NULL,alexander_severus
+195,"Severus II.","Severus II",NULL,NULL,severus_ii
+196,"Sohn des Vitellius","Son of Vitellius",NULL,NULL,son_of_vitellius
+197,"Ulpia Severina","Ulpia Severina",NULL,NULL,ulpia_severina
+198,Volusianus,Volusianus,NULL,NULL,volusianus
+199,"Marcus Antonius","Mark Antony",NULL,"Member of the Second Triumvirate",mark_antony
+200,"Lucius Verus","Lucius Verus",NULL,"Roman emperor from 8 March 161 – 169.",lucius_verus
+201,Matidia,Matidia,Matidia,NULL,NULL
